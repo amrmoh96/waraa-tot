@@ -1,0 +1,29 @@
+<div class="home__page__container">
+    <div class="home__page__container__banner">
+        <!-- <div class="home__page__container__banner__overlay"></div> -->
+        <app-home-page-banner></app-home-page-banner>
+    </div>
+    <div class="home__page__container__content">
+        <div class="container">
+            <div class="home__page__container__content__latest__news">
+                <div class="home__page__container__content__latest__news__right__side">
+                    <h1 class="home__page__container__content__latest__news__title">Latest News</h1>
+                    <p class="home__page__container__content__latest__news__text">Nowadays, I Expanded My Services,
+                        Offering Services And Solutions For All Customers Worldwide.</p>
+                </div>
+                <div class="home__page__container__content__latest__news__left__side">
+                    <p>We tested and found effective. Dab a scratch with the lightest marker in the kit, then use a
+                        darker one if needed. Wipe off the excess a soft cloth before it dries, and finish with a
+                        polish..</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="homepage__latest__news">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let newsItem of news">
+                    <app-news-card-home [newsItem]="newsItem"></app-news-card-home>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

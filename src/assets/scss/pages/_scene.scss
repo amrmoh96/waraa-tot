@@ -1,0 +1,109 @@
+.scene__page {
+
+  .scene__page__scenes {
+    &:first-child {
+      padding-top: 10rem;
+    }
+
+    padding-bottom: 3rem;
+
+    background: url('../../images/scene-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+
+    .scene__page__scenes__main__scene {
+      position: relative;
+
+      iframe,
+      img {
+        height: 505px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .scene__page__scenes__main__scene__title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        padding: 2rem;
+        align-items: baseline;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .play {
+          display: flex;
+          align-items: center;
+          margin-bottom: .8rem;
+
+          img {
+            width: 38px;
+            height: 38px;
+          }
+
+          p {
+            margin-bottom: 0;
+            margin-left: 1.2rem;
+            font-size: .8rem;
+            font-family: $NeueHaasDisplayBold;
+          }
+        }
+
+        h1 {
+          font-size: 2.01rem;
+          width: 200px;
+          line-height: 1.4;
+          font-family: $NeueHaasDisplayMediu;
+        }
+      }
+
+      .scene__page__scenes__main__scene__play {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 105px;
+          width: 105px;
+        }
+      }
+
+      margin-bottom: 4rem;
+    }
+
+    .scene__page__scenes__title {
+      font-size: 1.1rem;
+      font-family: $PlayfairDisplay-Bold;
+      margin-bottom: 1.01rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .card__image {
+    .card__image__content {
+      visibility: visible;
+      opacity: 1;
+      padding: 1rem;
+    }
+
+    .card__image__img {
+      .card__image__img__overlay {
+        background: transparent;
+      }
+
+      img {
+        height: 339px;
+        filter: contrast(1.5);
+      }
+    }
+  }
+}

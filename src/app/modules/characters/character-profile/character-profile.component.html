@@ -1,0 +1,49 @@
+<div class="character__profile">
+    <div class="character__profile__banner">
+        <div class="character__profile__banner__overlay"></div>
+        <div class="character__profile__banner__overlay__reversed"></div>
+        <div class="character__profile__banner__image__overlay">
+            <img src="{{coverImage}}" alt="">
+        </div>
+        <div class="container-fluid">
+            <div class="character__profile__banner__content__area">
+                <h1>{{character?.firstname}} {{character?.lastname}}</h1>
+                <h3>{{character?.intro}}</h3>
+                <p>{{character?.about | slice:0:360}}</p>
+                <button class="btn btn-danger">Ask me</button>
+            </div>
+            <div class="character__profile__banner__user__image" *ngIf="profileImage">
+                <img src="{{profileImage}}" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="character__profile__scenes">
+        <div class="container-fluid">
+            <h2 class="character__profile__scenes__title">Marwan scenes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let vid of charVideos">
+                    <app-scene-card [video]="vid"></app-scene-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="character__profile__scenes">
+        <div class="container-fluid">
+            <h2 class="character__profile__scenes__title">Marwan Images</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let img of charImages">
+                    <app-card-image [image]="img"></app-card-image>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="character__profile__ask__me">
+        <div class="container-fluid">
+            <h3>{{character?.intro}}</h3>
+            <div class="character__profile__ask__me__buttons">
+                <button class="btn btn-danger">Ask Me</button>
+                <button class="btn btn-outline-light">Get help for a specific issue</button>
+            </div>
+        </div>
+    </div>
+</div>

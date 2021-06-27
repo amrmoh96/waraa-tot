@@ -1,0 +1,74 @@
+.card__image {
+  position: relative;
+  transition: .5s all ease-in-out;
+  border: 1px solid transparent;
+
+  .card__image__img {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+
+    .card__image__img__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($color: #000000, $alpha: .3);
+      z-index: 1;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      height: 282px;
+      opacity: .8;
+      transition: .5s all ease;
+      filter: contrast(1.5);
+    }
+  }
+
+  .card__image__content {
+    position: absolute;
+    top: 0;
+    padding: 1rem 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    transition: .5s all ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    .card__image__content__title {
+      &:first-child {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+        font-weight: bold;
+      }
+
+      font-size: .9rem;
+      font-family: $NeueHaasDisplayMediu;
+      width: 110px;
+    }
+  }
+
+
+  &:hover {
+    .card__image__img {
+      img {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+
+    .card__image__content {
+      padding: 1rem;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

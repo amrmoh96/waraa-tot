@@ -1,0 +1,11 @@
+// fonts
+@import './fonts/fonts.scss';
+
+// layout
+@import './layout/layout';
+
+// components
+@import './components/header', './components/banner', './components/scence-card', './components/footer', './components/news-card', './components/card-image';
+
+// pages
+@import './pages/home-page', './pages/characters', './pages/character-profile', './pages/scene';

@@ -1,0 +1,39 @@
+<div class="scene__page">
+    <div class="scene__page__scenes">
+        <div class="container-fluid">
+            <h2 class="scene__page__scenes__title">behind the Scenes</h2>
+            <div class="scene__page__scenes__main__scene">
+                <!-- <video src="https://www.youtube.com/watch?v=o6SprGmHTy4"></video> -->
+                <iframe src="{{mainScene.mediaUrl}}" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                <div class="scene__page__scenes__main__scene__title">
+                    <div class="play">
+                        <img src="../../../../assets/images/play-red.png" alt="">
+                        <p>Watch Video</p>
+                    </div>
+                    <h1>{{mainScene?.title}}</h1>
+                </div>
+                <div class="scene__page__scenes__main__scene__play">
+                    <img src="../../../../assets/images/scene-pplay.png" alt="">
+                </div>
+            </div>
+            <h2 class="scene__page__scenes__title">Videos</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let scene of scenes">
+                    <app-scene-card [video]="scene"></app-scene-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scene__page__scenes">
+        <div class="container-fluid">
+            <h2 class="scene__page__scenes__title">Images</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let img of images">
+                    <app-card-image [image]="img"></app-card-image>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,185 @@
+.banner {
+  color: #fff;
+
+  .banner__description__area {
+    flex-basis: 50%;
+    display: flex;
+    padding-top: 5rem;
+
+    .banner__description__area__social {
+      flex-basis: 20%;
+
+      .social__list {
+        text-transform: uppercase;
+        writing-mode: vertical-rl;
+        -webkit-writing-mode: vertical-rl;
+        -moz-writing-mode: vertical-rl;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0;
+        margin-right: 0;
+
+        .social__list__scorll {
+          margin-top: .65rem;
+
+          a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            position: relative;
+            font-size: 1rem;
+            font-family: 'roboto';
+            text-transform: capitalize;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 115%;
+              background: #fff;
+              width: 2px;
+              height: 0;
+              border: none;
+              left: calc(50% - 2px);
+              transition: .5s all ease-in-out;
+            }
+
+            &:hover {
+              &::after {
+                height: 50px;
+              }
+            }
+          }
+        }
+
+        .social__list__item {
+          margin-bottom: 3rem;
+          transform: rotateZ(180deg);
+
+          .social__list__item__link {
+            text-decoration: none;
+            color: #fff;
+            opacity: .2;
+            transition: .5s all ease-in-out;
+            font-size: .75rem;
+            font-family: $NeueHaasDisplayLight;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .banner__description__area__content {
+      flex-basis: 80%;
+
+      .banner__description__area__title {
+        font-size: 6.866rem;
+        margin: 0;
+        font-family: $PlayfairDisplay-Bold;
+        font-weight: bold;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: .8rem;
+      }
+
+      .banner__description__area__text {
+        font-size: 1.06rem;
+        margin-top: 6.2rem;
+        position: relative;
+        z-index: 1;
+        // padding-right: 11.33rem;
+      }
+    }
+  }
+
+  .banner__graphics__area {
+    flex-basis: 50%;
+    display: flex;
+    position: relative;
+
+    .banner__graphics__area__character {
+      width: 29.333rem;
+      margin: auto;
+      height: 600px;
+      object-fit: scale-down;
+    }
+
+    .banner__graphics__area__character__overlay {
+      position: absolute;
+      width: 100%;
+      left: -74px;
+      bottom: -114px;
+
+    }
+
+    .banner__graphics__area_behind__scence {
+      position: absolute;
+      bottom: 30px;
+      right: 0;
+      width: 328px;
+
+      .banner__graphics__area_behind__scence__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.07rem;
+
+        .banner__graphics__area_behind__scence__header__title {
+          font-size: .95rem;
+          font-family: $PlayfairDisplay-Bold;
+          color: #fff;
+          margin-bottom: 0;
+        }
+
+        .banner__graphics__area_behind__scence__header__arrows {
+          display: flex;
+          align-items: center;
+
+          .banner__graphics__area_behind__scence__header__arrows__arrow {
+            width: 31px;
+            height: 31px;
+            border: 1px dashed #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .5s all ease-in-out;
+
+            &:not(:last-child) {
+              margin-right: 1.6rem;
+            }
+
+            &:hover {
+              border-color: #F44336;
+              color: #F44336;
+            }
+
+          }
+        }
+      }
+
+      .banner__graphics__area_behind__scence__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .banner__graphics__area_behind__scence__content__scence__card {
+          width: 158px;
+
+          &:not(:last-child) {
+            margin-right: .8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 320px — 480px: Mobile devices
+// 481px — 768px: iPads, Tablets
+// 769px — 1024px: Small screens, laptops
+// 1025px — 1200px: Desktops, large screens
+// 1201px and more —  Extra large screens, TV

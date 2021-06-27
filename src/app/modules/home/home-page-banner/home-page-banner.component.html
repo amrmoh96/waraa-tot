@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="banner d-flex justify-content-between">
+        <div class="banner__description__area">
+            <div class="banner__description__area__social">
+                <ul class="list-unstyled social__list">
+                    <li class="social__list__scorll"><a href="" (click)="scrollToNews($event)">Scroll</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link" href="#">facebook</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link" href="">Twitter</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link" href="">instagram</a></li>
+                </ul>
+            </div>
+            <div class="banner__description__area__content">
+                <h1 class="banner__description__area__title">Berry</h1>
+                <h1 class="banner__description__area__title">leaves</h1>
+                <p class="banner__description__area__text">
+                    An unknown film director decides to return to Egypt as headmaster of the theater arts academy from
+                    which
+                    he graduated to apply the new educational ideas and methods he acquired abroad. He carefully selects
+                    the
+                    students of the new batch from different social classes and circumstances to implement his plan.
+                </p>
+            </div>
+        </div>
+        <div class="banner__graphics__area">
+
+            <img src="../../../../assets/images/char1.png" class="banner__graphics__area__character" alt="Character">
+            <img src="../../../../assets/images/char-overlay.png" class="banner__graphics__area__character__overlay"
+                alt="Character Overlay">
+            <div class="banner__graphics__area_behind__scence">
+                <div class="banner__graphics__area_behind__scence__header">
+                    <p class="banner__graphics__area_behind__scence__header__title">Watch Behind The Scence</p>
+                    <div class="banner__graphics__area_behind__scence__header__arrows">
+                        <div
+                            class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__left">
+                            <i class="la la-angle-left"></i>
+                        </div>
+                        <div
+                            class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__right">
+                            <i class="la la-angle-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner__graphics__area_behind__scence__content">
+                    <div class="banner__graphics__area_behind__scence__content__scence__card">
+                        <app-scence-card-small></app-scence-card-small>
+                    </div>
+                    <div class="banner__graphics__area_behind__scence__content__scence__card">
+                        <app-scence-card-small></app-scence-card-small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="scene__page">
+    <div class="scene__page__scenes">
+        <div class="container-fluid">
+            <h2 class="scene__page__scenes__title">Scenes</h2>
+            <div class="scene__page__scenes__main__scene">
+                <img src="../../../../assets/images/scene.jpg" alt="">
+                <div class="scene__page__scenes__main__scene__title">
+                    <h1>{{mainScene?.title}}</h1>
+                </div>
+                <div class="scene__page__scenes__main__scene__play">
+                    <img src="../../../../assets/images/scene-pplay.png" alt="">
+                </div>
+            </div>
+            <h2 class="scene__page__scenes__title">More Scenes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" *ngFor="let scene of scenes">
+                    <app-card-image [image]="scene"></app-card-image>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

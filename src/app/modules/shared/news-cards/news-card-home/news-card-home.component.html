@@ -1,0 +1,15 @@
+<div class="news__card news__card__home__page">
+    <div class="news__card__img__container">
+        <img src="../../../../../assets/images/news-image.jpg" alt="">
+    </div>
+    <div class="new__card__content">
+        <p class="news__card__tags">News, Art</p>
+        <p class="news__card__title">{{newsItem?.title}}</p>
+        <p class="news__card__date">{{newsItem?.creationDate | date : 'MMM d, y'}}</p>
+        <p class="news__card__description">{{newsItem?.body}}</p>
+        <a href="#" class="news__card__link">
+            <i class="la la-arrow-right"></i>
+            READ MORE
+        </a>
+    </div>
+</div>
