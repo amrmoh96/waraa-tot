@@ -37,7 +37,7 @@ export class CharactersComponent implements OnInit {
 								this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
 									let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
 									if(main_img){
-										element.profileURL = `${this.imgApi}/uploads/media/${mediaElement.id}.png`
+										element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
 									}
 								})
 							}

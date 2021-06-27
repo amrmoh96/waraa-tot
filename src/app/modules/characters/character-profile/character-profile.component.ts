@@ -39,15 +39,17 @@ export class CharacterProfileComponent implements OnInit {
 					this.tagService.getTagsByMediaId(Number(element.id)).then((data) => {
 						element.tags = data;
 						if(element.tags?.find(T => T.tag1 == 'main_image')){
-							this.profileImage = `${this.imgApi}/uploads/media/${element.id}.png`;
+							this.profileImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
 						}
 						if(element.tags?.find(T => T.tag1 == 'cover_image')){
-							this.coverImage = `${this.imgApi}/uploads/media/${element.id}.png`;
+							this.coverImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
+						}
+						if(element.tags?.find(T => T.tag1 == 'scene_image') && element.mediaType == 2){
+							this.charImages.push(element);
 						}
 					});
 				}
 				this.charVideos = res.filter((M) => M.mediaType == 1);
-				this.charImages = res.filter((M) => M.mediaType == 2);
 			});
 		});
 	}

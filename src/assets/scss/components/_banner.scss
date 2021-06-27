@@ -98,12 +98,57 @@
     flex-basis: 50%;
     display: flex;
     position: relative;
+    justify-content: center;
+
+    .banner__graphics__area__slider__dots {
+      position: absolute;
+      top: 20%;
+      right: 3%;
+      display: flex;
+      flex-direction: column;
+
+      .banner__graphics__area__slider__dots__dot {
+        width: 12px;
+        height: 12px;
+        background: transparent;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        transition: .5s all ease;
+        margin-bottom: .6rem;
+        cursor: pointer;
+      }
+
+      .active-dot {
+        background: #F44336;
+        border-color: transparent;
+      }
+    }
+
+    .banner__graphics__area__slider {
+      display: flex;
+      width: 400px;
+      height: 600px;
+      overflow: hidden;
+      position: relative;
+
+    }
 
     .banner__graphics__area__character {
       width: 29.333rem;
       margin: auto;
       height: 600px;
       object-fit: scale-down;
+      position: absolute;
+      transition: .5s all ease;
+      transform: translateX(-1000px);
+      visibility: hidden;
+      opacity: 0;
+
+      &.active-slide {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
     }
 
     .banner__graphics__area__character__overlay {

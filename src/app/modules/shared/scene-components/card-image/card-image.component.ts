@@ -14,6 +14,6 @@ export class CardImageComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {
-		this.imgURL = `${this.imgApi}/uploads/media/${this.image.id}.png`;
+		this.imgURL = `${this.imgApi}/Media/GetMedia?id=${this.image.id}`;
 	}
 }

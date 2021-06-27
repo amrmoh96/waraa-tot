@@ -5,8 +5,7 @@
 export const environment = {
 	production: false,
 	api: 'http://101.99.91.240:8082/api',
-	imgApi: 'http://101.99.91.240:8084'
-	
+	imgApi: 'http://101.99.91.240:8082/api'
 };
 
 /*

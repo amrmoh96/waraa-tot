@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: [ './home-page-banner.component.scss' ]
 })
 export class HomePageBannerComponent implements OnInit {
+	public activeSlide:number = 1;
 	constructor() {}
 
 	ngOnInit(): void {}
@@ -13,5 +14,9 @@ export class HomePageBannerComponent implements OnInit {
 	scrollToNews($event: Event) {
 		$event.preventDefault();
 		document.getElementById('homepage__latest__news')?.scrollIntoView({behavior:"smooth", block:'nearest'})
+	}
+
+	slide(slide:number = 1){
+		this.activeSlide = slide;
 	}
 }

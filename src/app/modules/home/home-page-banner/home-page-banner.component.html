@@ -22,19 +22,29 @@
             </div>
         </div>
         <div class="banner__graphics__area">
-
-            <img src="../../../../assets/images/char1.png" class="banner__graphics__area__character" alt="Character">
+            <div class="banner__graphics__area__slider__dots">
+                <span class="banner__graphics__area__slider__dots__dot" [class.active-dot]="activeSlide == 1"
+                    (click)="slide(1)"></span>
+                <span class="banner__graphics__area__slider__dots__dot" [class.active-dot]="activeSlide == 2"
+                    (click)="slide(2)"></span>
+            </div>
+            <div class="banner__graphics__area__slider">
+                <img src="../../../../assets/images/char1.png" [class.active-slide]="activeSlide == 1"
+                    class="banner__graphics__area__character" alt="Character">
+                <img src="../../../../assets/images/char2.png" [class.active-slide]="activeSlide == 2"
+                    class="banner__graphics__area__character" alt="Character">
+            </div>
             <img src="../../../../assets/images/char-overlay.png" class="banner__graphics__area__character__overlay"
                 alt="Character Overlay">
             <div class="banner__graphics__area_behind__scence">
                 <div class="banner__graphics__area_behind__scence__header">
                     <p class="banner__graphics__area_behind__scence__header__title">Watch Behind The Scence</p>
                     <div class="banner__graphics__area_behind__scence__header__arrows">
-                        <div
+                        <div (click)="slide(1)"
                             class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__left">
                             <i class="la la-angle-left"></i>
                         </div>
-                        <div
+                        <div (click)="slide(2)"
                             class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__right">
                             <i class="la la-angle-right"></i>
                         </div>
