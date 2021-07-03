@@ -1,0 +1,15 @@
+<div class="single__new__page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{{newsImage}}" />
+            </div>
+            <div class="col-md-12">
+                <h1>{{newsItem?.title}}</h1>
+                <small>{{newsItem?.creationDate | date : 'MMM d, y'}}</small>
+                <br />
+                <p>{{newsItem?.body}}</p>
+            </div>
+        </div>
+    </div>
+</div>

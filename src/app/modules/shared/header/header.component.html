@@ -1,25 +1,40 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <a class="navbar-brand" routerLink="">
-            <img src="../../../../assets/images/logo.png" width="83" height="58" />
+        <a class="navbar-brand"
+            routerLink="">
+            <img src="../../../../assets/images/logo.png"
+                width="83"
+                height="58" />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler"
+            type="button"
+            (click)="showMobileNav = true"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="la-2x la-bars la"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-between"
+            id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+                    <a class="nav-link active"
+                        aria-current="page"
+                        routerLink="">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="scene">Scenes</a>
+                    <a class="nav-link"
+                        routerLink="scene">Scenes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="scene/behind">Behind The Scenes</a>
+                    <a class="nav-link"
+                        routerLink="scene/behind">Behind The Scenes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/characters">Characters</a>
+                    <a class="nav-link"
+                        routerLink="/characters">Characters</a>
                 </li>
             </ul>
             <div class="d-flex">
@@ -33,3 +48,34 @@
         </div>
     </div>
 </nav>
+
+<div class="mobile__nav__container"
+    *ngIf="showMobileNav">
+    <i class="la la-times"
+        (click)="showMobileNav = false"></i>
+    <ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active"
+                    aria-current="page"
+                    (click)="showMobileNav = false"
+                    routerLink="">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                    (click)="showMobileNav = false"
+                    routerLink="scene">Scenes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                    (click)="showMobileNav = false"
+                    routerLink="scene/behind">Behind The Scenes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                    (click)="showMobileNav = false"
+                    routerLink="/characters">Characters</a>
+            </li>
+        </ul>
+    </ul>
+</div>

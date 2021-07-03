@@ -5,7 +5,7 @@
 @import './layout/layout';
 
 // components
-@import './components/header', './components/banner', './components/scence-card', './components/footer', './components/news-card', './components/card-image';
+@import './components/header', './components/banner', './components/scence-card', './components/footer', './components/news-card', './components/card-image', './components/character-slider';
 
 // pages
-@import './pages/home-page', './pages/characters', './pages/character-profile', './pages/scene';
+@import './pages/home-page', './pages/characters', './pages/character-profile', './pages/scene', './pages/news-page';

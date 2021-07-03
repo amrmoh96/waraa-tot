@@ -1,7 +1,7 @@
 .news__card {
   &.news__card__home__page {
     .news__card__img__container {
-      height: 257px;
+      height: 17.1rem;
       overflow: hidden;
       border-radius: 5px;
 
@@ -53,6 +53,7 @@
         font-family: $NeueHaasDisplayBold;
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         i {
           margin-right: .5rem;

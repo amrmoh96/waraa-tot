@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Media } from 'src/app/models/Media.model';
+import { UtilityService } from 'src/app/services/utility.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,10 +13,21 @@ export class SceneCardComponent implements OnInit {
 	@Input() video: Media = {};
 	public imgApi: string = environment.imgApi;
 	public vidUrl: string = '';
-	constructor() {}
+	public isVideoPlaying: boolean = false;
+	constructor(private sanitizer: DomSanitizer, private utilityService: UtilityService) {}
 
-	ngOnInit(): void {
-		this.vidUrl = `${this.imgApi}/Media/GetMedia?id=${this.video.id}`;
-		console.log(this.vidUrl);
+	ngOnInit(): void {}
+
+	iFrameSRC() {
+		let _URL = `https://www.youtube.com/embed/${this.video.youtubeId}`;
+		return this.sanitizer.bypassSecurityTrustResourceUrl(_URL);
+	}
+	playVideo() {
+		this.isVideoPlaying = true;
+		this.utilityService.bodyUnscrollable();
+	}
+	closeVideo() {
+		this.isVideoPlaying = false;
+		this.utilityService.bodyScrollable();
 	}
 }

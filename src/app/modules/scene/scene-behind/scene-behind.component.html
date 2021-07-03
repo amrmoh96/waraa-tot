@@ -2,19 +2,18 @@
     <div class="scene__page__scenes">
         <div class="container-fluid">
             <h2 class="scene__page__scenes__title">behind the Scenes</h2>
-            <div class="scene__page__scenes__main__scene">
-                <!-- <video src="https://www.youtube.com/watch?v=o6SprGmHTy4"></video> -->
-                <iframe src="{{mainScene.mediaUrl}}" title="YouTube video player" frameborder="0"
+            <div class="scene__page__scenes__main__scene" *ngIf="mainScene">
+                <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
-                <div class="scene__page__scenes__main__scene__title">
+                <div class="scene__page__scenes__main__scene__title" >
                     <div class="play">
                         <img src="../../../../assets/images/play-red.png" alt="">
                         <p>Watch Video</p>
                     </div>
                     <h1>{{mainScene?.title}}</h1>
                 </div>
-                <div class="scene__page__scenes__main__scene__play">
+                <div class="scene__page__scenes__main__scene__play" (click)="playVideo()">
                     <img src="../../../../assets/images/scene-pplay.png" alt="">
                 </div>
             </div>
@@ -35,5 +34,13 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="video__player__container" *ngIf="isVideoPlaying">
+    <div class="video__player__container__content">
+        <i (click)="closeVideo()" class="la la-times"></i>
+        <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>

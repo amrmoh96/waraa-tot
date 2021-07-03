@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from 'src/app/models/Character.model';
 import { Media } from 'src/app/models/Media.model';
 import { Tag } from 'src/app/models/Tag.model';
@@ -8,24 +9,25 @@ import { TagsService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-	selector: 'app-characters',
-	templateUrl: './characters.component.html',
-	styleUrls: [ './characters.component.scss' ]
+  selector: 'app-characters-slider',
+  templateUrl: './characters-slider.component.html',
+  styleUrls: ['./characters-slider.component.scss']
 })
-export class CharactersComponent implements OnInit {
-	public characters: Character[] = [];
+export class CharactersSliderComponent implements OnInit {
+  public characters: Character[] = [];
 	public selectedChar: Character|undefined;
 	public imgApi:string = environment.imgApi;
 
 	constructor(
 		private characterService:CharacterService,
 		private mediaService:MediaService,
-		private tagService:TagsService
+		private tagService:TagsService,
+    private router:Router
 	) {}
-
-	ngOnInit(): void {
-		this.characterService.getCharacters().then(res => {
+  ngOnInit(): void {
+    this.characterService.getCharacters().then(res => {
 			this.characters = res;
+      
 			for (let index = 0; index < this.characters.length; index++) {
 				const element = this.characters[index];
 				if(element.id){
@@ -46,9 +48,14 @@ export class CharactersComponent implements OnInit {
 				}
 			}
 		});
-	}
-	selectCharacter(char: Character) {
-		this.selectedChar = {}
-		this.selectedChar = char;``
-	}
+  }
+
+  navigate(char:Character){
+    this.router.navigate([`./characters/profile/${char.id}`]);
+    setTimeout(() => {
+      window.scroll(0,0)
+      window.location.reload()
+    }, 1);
+  }
+
 }

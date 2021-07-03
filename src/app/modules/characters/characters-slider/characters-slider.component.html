@@ -1,0 +1,7 @@
+<div class="characters__slider">
+    <div class=" characters__slider__single{{selectedChar?.firstname == char.firstname ? '-hidden':''}}"
+        *ngFor="let char of characters" (click)="navigate(char)">
+        <img src="{{char.profileURL}}" alt="">
+        <p>{{char.firstname}}</p>
+    </div>
+</div>

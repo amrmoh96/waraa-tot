@@ -5,12 +5,14 @@ import { CharactersRoutingModule } from './characters-routing.module';
 import { CharactersComponent } from './characters/characters.component';
 import { SharedModule } from '../shared/shared.module';
 import { CharacterProfileComponent } from './character-profile/character-profile.component';
+import { CharactersSliderComponent } from './characters-slider/characters-slider.component';
 
 
 @NgModule({
   declarations: [
     CharactersComponent,
-    CharacterProfileComponent
+    CharacterProfileComponent,
+    CharactersSliderComponent
   ],
   imports: [
     CommonModule,

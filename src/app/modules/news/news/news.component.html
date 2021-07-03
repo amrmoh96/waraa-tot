@@ -1,0 +1,9 @@
+<div class="all_news__page">
+    <div class="container-fluid" id="homepage__latest__news">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let newsItem of news">
+                <app-news-card-home [newsItem]="newsItem" (newsClicked)="navigate($event)"></app-news-card-home>
+            </div>
+        </div>
+    </div>
+</div>

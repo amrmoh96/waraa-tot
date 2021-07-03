@@ -8,6 +8,10 @@
     overflow: hidden;
     position: relative;
 
+    @media only screen and (max-width:480px) {
+      background-size: cover;
+    }
+
     .home__page__container__banner__overlay {
       position: absolute;
       top: 0;
@@ -31,9 +35,21 @@
       justify-content: space-between;
       margin-bottom: 2.2rem;
 
+      @media only screen and (max-width:1024px) {
+        padding: 0 7rem;
+      }
+
+      @media only screen and (max-width:480px) {
+        flex-direction: column;
+      }
+
       .home__page__container__content__latest__news__right__side {
         flex-basis: 50%;
         padding-right: 8rem;
+
+        @media only screen and (max-width:480px) {
+          padding-right: 0;
+        }
 
         .home__page__container__content__latest__news__title {
           font-size: 1.09rem;
@@ -54,6 +70,10 @@
         flex-basis: 50%;
         padding-left: 6rem;
 
+        @media only screen and (max-width:480px) {
+          padding-left: 0;
+        }
+
         p {
           font-size: 1rem;
           font-family: $NeueHaasDisplayRoman;
@@ -62,5 +82,11 @@
         }
       }
     }
+  }
+
+  .all__news__link {
+    color: #F44336;
+    font-size: 1.3rem;
+    font-family: $PlayfairDisplay-Regular;
   }
 }

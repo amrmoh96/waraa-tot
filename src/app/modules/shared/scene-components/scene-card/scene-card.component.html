@@ -1,15 +1,25 @@
 <div class="scence__card">
     <div class="scence__card__img">
-        <img src="../../../../../assets/images/scene-char.png" alt="">
+        <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
     <div class="scence__card__content">
         <p class="scence__card__content__title">{{video.id?(video.id > 9 ? '' : 0):0}}{{video.id}}</p>
         <p class="scence__card__content__title">{{video.title}}</p>
     </div>
-    <div class="scence__card__play__icon__container">
+    <div class="scence__card__play__icon__container" (click)="playVideo()">
         <div class="scence__card__play__icon">
             <img src="../../../../../assets/images/play-o.png" alt="">
             <img src="../../../../../assets/images/play.png" alt="">
         </div>
+    </div>
+</div>
+
+<div class="video__player__container" *ngIf="isVideoPlaying">
+    <div class="video__player__container__content">
+        <i (click)="closeVideo()" class="la la-times"></i>
+        <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>

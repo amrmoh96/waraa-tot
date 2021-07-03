@@ -1,6 +1,5 @@
 <div class="home__page__container">
     <div class="home__page__container__banner">
-        <!-- <div class="home__page__container__banner__overlay"></div> -->
         <app-home-page-banner></app-home-page-banner>
     </div>
     <div class="home__page__container__content">
@@ -21,7 +20,12 @@
         <div class="container-fluid" id="homepage__latest__news">
             <div class="row">
                 <div class="col-md-4" *ngFor="let newsItem of news">
-                    <app-news-card-home [newsItem]="newsItem"></app-news-card-home>
+                    <app-news-card-home (newsClicked)="navigate($event)" [newsItem]="newsItem"></app-news-card-home>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a routerLink="./news" class="all__news__link">All News <i class="la la-arrow-right"></i></a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,62 @@
+.characters__slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+
+  .characters__slider__single {
+    width: 250px;
+    height: 300px;
+    position: relative;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    img {
+      width: 250px;
+      height: 300px;
+      object-fit: scale-down;
+    }
+
+    p {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      bottom: 0;
+      font-size: 1.5rem;
+      font-family: $NeueHaasDisplayMediu;
+      opacity: 0;
+      transition: .5s all ease;
+    }
+
+    &:hover {
+      p {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { News } from 'src/app/models/News.model';
 import { NewsMedia } from 'src/app/models/NewsMedia.model';
 import { MediaService } from 'src/app/services/media.service';
@@ -14,7 +14,8 @@ import { environment } from 'src/environments/environment';
 export class NewsCardHomeComponent implements OnInit {
 	@Input() newsItem: News = {};
 	public imgApi:string = environment.imgApi;
-	public newsImage:string = ''
+	public newsImage:string = '';
+	@Output() newsClicked:EventEmitter<any> = new EventEmitter();
 	constructor(private newsMedia:NewsMediaService, private mediaService:MediaService, private tagService:TagsService) {}
 
 	ngOnInit(): void {
@@ -37,5 +38,10 @@ export class NewsCardHomeComponent implements OnInit {
 				}
 			})
 		}
+	}
+
+	public navigate($event:Event){
+		$event.preventDefault();
+		this.newsClicked.emit({id:this.newsItem.id});
 	}
 }

@@ -1,5 +1,26 @@
 html {
   font-size: 15px;
+
+  // 320px — 480px: Mobile devices
+  @media only screen and (max-width:480px) {
+    font-size: 6px;
+  }
+
+  @media only screen and (max-width:1024px) and (min-width:768px) {
+    font-size: 8px;
+  }
+
+  @media only screen and (width:1024px) {
+    font-size: 10px;
+  }
+
+  @media only screen and (max-width:1200px) and (min-width:1025px) {
+    font-size: 12px;
+  }
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 .container,
@@ -7,10 +28,10 @@ html {
 .container-lg,
 .container-md,
 .container-sm {
-  padding: 0 15px;
+  padding: 0 1rem;
 }
 
 .container-fluid {
-  padding-left: 75px;
-  padding-right: 75px;
+  padding-left: 5rem;
+  padding-right: 5rem;
 }

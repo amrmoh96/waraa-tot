@@ -1,6 +1,10 @@
 .banner {
   color: #fff;
 
+  @media only screen and (max-width:480px) {
+    flex-direction: column;
+  }
+
   .banner__description__area {
     flex-basis: 50%;
     display: flex;
@@ -45,7 +49,7 @@
 
             &:hover {
               &::after {
-                height: 50px;
+                height: 3.33rem;
               }
             }
           }
@@ -108,11 +112,11 @@
       flex-direction: column;
 
       .banner__graphics__area__slider__dots__dot {
-        width: 12px;
-        height: 12px;
+        width: .8rem;
+        height: .8rem;
         background: transparent;
         border-radius: 50%;
-        border: 3px solid #fff;
+        border: 2px solid #fff;
         transition: .5s all ease;
         margin-bottom: .6rem;
         cursor: pointer;
@@ -126,8 +130,8 @@
 
     .banner__graphics__area__slider {
       display: flex;
-      width: 400px;
-      height: 600px;
+      width: 26.666rem;
+      height: 40rem;
       overflow: hidden;
       position: relative;
 
@@ -136,7 +140,7 @@
     .banner__graphics__area__character {
       width: 29.333rem;
       margin: auto;
-      height: 600px;
+      height: 40rem;
       object-fit: scale-down;
       position: absolute;
       transition: .5s all ease;
@@ -154,16 +158,34 @@
     .banner__graphics__area__character__overlay {
       position: absolute;
       width: 100%;
-      left: -74px;
-      bottom: -114px;
+      left: -4.933rem;
+      bottom: -7.6rem;
 
+
+      @media only screen and (max-width:1024px) and (min-width:768px) {
+        left: -3.933rem;
+        bottom: -6rem;
+      }
+
+      @media only screen and (width:1024px) {
+        bottom: -7.99rem;
+      }
+
+      @media only screen and (max-width:1200px) and (min-width:1025px) {
+        bottom: -1.8rem;
+        left: -4rem;
+      }
+
+      @media only screen and (max-width:1440px) and (min-width:1200px) {
+        bottom: -6rem;
+      }
     }
 
     .banner__graphics__area_behind__scence {
       position: absolute;
       bottom: 30px;
       right: 0;
-      width: 328px;
+      width: 21.86rem;
 
       .banner__graphics__area_behind__scence__header {
         display: flex;
@@ -183,8 +205,8 @@
           align-items: center;
 
           .banner__graphics__area_behind__scence__header__arrows__arrow {
-            width: 31px;
-            height: 31px;
+            width: 2.09rem;
+            height: 2.09rem;
             border: 1px dashed #fff;
             border-radius: 50%;
             display: flex;
@@ -212,7 +234,7 @@
         justify-content: space-between;
 
         .banner__graphics__area_behind__scence__content__scence__card {
-          width: 158px;
+          width: 10.53rem;
 
           &:not(:last-child) {
             margin-right: .8rem;

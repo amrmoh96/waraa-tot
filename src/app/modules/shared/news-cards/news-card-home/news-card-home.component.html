@@ -7,7 +7,7 @@
         <p class="news__card__title">{{newsItem?.title}}</p>
         <p class="news__card__date">{{newsItem?.creationDate | date : 'MMM d, y'}}</p>
         <p class="news__card__description">{{newsItem?.body}}</p>
-        <a href="#" class="news__card__link">
+        <a (click)="navigate($event)" class="news__card__link">
             <i class="la la-arrow-right"></i>
             READ MORE
         </a>
