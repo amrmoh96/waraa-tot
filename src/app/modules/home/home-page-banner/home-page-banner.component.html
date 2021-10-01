@@ -3,10 +3,14 @@
         <div class="banner__description__area">
             <div class="banner__description__area__social">
                 <ul class="list-unstyled social__list">
-                    <li class="social__list__scorll"><a href="" (click)="scrollToNews($event)">Scroll</a></li>
-                    <li class="social__list__item"><a class="social__list__item__link" href="#">facebook</a></li>
-                    <li class="social__list__item"><a class="social__list__item__link" href="">Twitter</a></li>
-                    <li class="social__list__item"><a class="social__list__item__link" href="">instagram</a></li>
+                    <li class="social__list__scorll"><a href=""
+                            (click)="scrollToNews($event)">Scroll</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link"
+                            href="#">facebook</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link"
+                            href="">Twitter</a></li>
+                    <li class="social__list__item"><a class="social__list__item__link"
+                            href="">instagram</a></li>
                 </ul>
             </div>
             <div class="banner__description__area__content">
@@ -23,20 +27,25 @@
         </div>
         <div class="banner__graphics__area">
             <div class="banner__graphics__area__slider__dots">
-                <span class="banner__graphics__area__slider__dots__dot" [class.active-dot]="activeSlide == 1"
-                    (click)="slide(1)"></span>
-                <span class="banner__graphics__area__slider__dots__dot" [class.active-dot]="activeSlide == 2"
-                    (click)="slide(2)"></span>
+                <span *ngFor="let char of  characters;let i = index"
+                    class="banner__graphics__area__slider__dots__dot"
+                    [class.active-dot]="activeSlide == i"
+                    (click)="slide(i)"></span>
             </div>
             <div class="banner__graphics__area__slider">
-                <img src="../../../../assets/images/char1.png" [class.active-slide]="activeSlide == 1"
-                    class="banner__graphics__area__character" alt="Character">
-                <img src="../../../../assets/images/char2.png" [class.active-slide]="activeSlide == 2"
-                    class="banner__graphics__area__character" alt="Character">
+                <div class="banner__graphics__area__slider__container"
+                    [ngStyle]="style">
+                    <img *ngFor="let char of  characters;let i = index"
+                        src="{{char?.profileURL}}"
+                        [class.active-slide]="activeSlide == i"
+                        class="banner__graphics__area__character"
+                        alt="Character">
+                </div>
             </div>
-            <img src="../../../../assets/images/char-overlay.png" class="banner__graphics__area__character__overlay"
+            <img src="../../../../assets/images/char-overlay.png"
+                class="banner__graphics__area__character__overlay"
                 alt="Character Overlay">
-            <div class="banner__graphics__area_behind__scence">
+            <!-- <div class="banner__graphics__area_behind__scence">
                 <div class="banner__graphics__area_behind__scence__header">
                     <p class="banner__graphics__area_behind__scence__header__title">Watch Behind The Scence</p>
                     <div class="banner__graphics__area_behind__scence__header__arrows">
@@ -58,7 +67,7 @@
                         <app-scence-card-small></app-scence-card-small>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

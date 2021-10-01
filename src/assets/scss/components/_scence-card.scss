@@ -113,15 +113,25 @@
       visibility: visible;
       opacity: 1;
 
+
       .scence__card__content__title {
         font-size: .85rem;
         font-family: $NeueHaasDisplayMediu;
+
+        @media screen and (max-width:426px) {
+          font-size: 1.7rem;
+          width: 100%;
+        }
       }
     }
 
     .scence__card__img {
       img {
         height: 7rem;
+
+        @media screen and (max-width:426px) {
+          height: 10rem;
+        }
       }
 
 

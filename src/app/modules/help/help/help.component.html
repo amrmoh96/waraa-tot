@@ -1,0 +1,93 @@
+<div class="help__page">
+    <div class="container-fluid">
+        <div class="title">
+            <h1>dolor sit amet, consetetur elitr</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="help__page__content__container">
+            <div class="help__page__content">
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+                <div class="help__page__content__box">
+                    <img src="../../../../assets/images/scence.jpg"
+                        alt="">
+                    <div class="help__page__content__box__data">
+                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <a href="#">
+                            <i class="la la-arrow-right"></i>
+                            READ MORE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tell__us__story__box">
+            <p>Tell us your so</p>
+            <p>story so we could help</p>
+            <a (click)="showForm()"><i class="la la-arrow-right"></i> CONTACT US</a>
+        </div>
+    </div>
+    <div class="contact__form"
+        *ngIf="showContactForm">
+        <i class="la la-times"
+            (click)="hideForm()"></i>
+        <h1>Tell us your story </h1>
+        <h1> we could help</h1>
+        <br>
+        <app-help-form></app-help-form>
+    </div>
+</div>

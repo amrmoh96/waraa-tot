@@ -51,11 +51,12 @@ export class CharactersSliderComponent implements OnInit {
   }
 
   navigate(char:Character){
-    this.router.navigate([`./characters/profile/${char.id}`]);
-    setTimeout(() => {
-      window.scroll(0,0)
-      window.location.reload()
-    }, 1);
+    this.router.navigate([`./characters/profile`, char.id]);
+	window.scrollTo({behavior:'smooth', top:0});
+    // setTimeout(() => {
+    //   window.scroll(0,0)
+    //   window.location.reload()
+    // }, 1);
   }
 
 }

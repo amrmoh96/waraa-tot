@@ -4,8 +4,8 @@
 
 export const environment = {
 	production: false,
-	api: 'http://101.99.91.240:8082/api',
-	imgApi: 'http://101.99.91.240:8082/api'
+	api: 'https://www.waraqaltoot.com/api/api',
+	imgApi: 'https://www.waraqaltoot.com/api/api'
 };
 
 /*

@@ -9,4 +9,5 @@ export interface Character {
 	nickname?: string;
 	fullName?: string;
 	profileURL?:string;
+	order?:number;
 }

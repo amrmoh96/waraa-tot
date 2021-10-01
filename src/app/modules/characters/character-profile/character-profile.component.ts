@@ -26,10 +26,15 @@ export class CharacterProfileComponent implements OnInit {
 		private CHME: CharacterMediaService,
 		private tagService: TagsService,
 		private activeRoute: ActivatedRoute
-	) {}
+	) {
+		window.scroll(0,0)
+	}
 
 	ngOnInit(): void {
 		this.activeRoute.params.subscribe((P) => {
+			this.character = {}
+			this.profileImage = '';
+			this.coverImage = ''
 			this.characterService.getCharacterById(Number(P.id)).then((res) => {
 				this.character = res;
 			});

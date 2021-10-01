@@ -7,25 +7,27 @@
             <div class="home__page__container__content__latest__news">
                 <div class="home__page__container__content__latest__news__right__side">
                     <h1 class="home__page__container__content__latest__news__title">Latest News</h1>
-                    <p class="home__page__container__content__latest__news__text">Nowadays, I Expanded My Services,
-                        Offering Services And Solutions For All Customers Worldwide.</p>
+                    <p class="home__page__container__content__latest__news__text">{{news[0]?.title}}</p>
                 </div>
                 <div class="home__page__container__content__latest__news__left__side">
-                    <p>We tested and found effective. Dab a scratch with the lightest marker in the kit, then use a
-                        darker one if needed. Wipe off the excess a soft cloth before it dries, and finish with a
-                        polish..</p>
+                    <p>{{(news[0]?.body || "").length || 0 > 190 ? (news[0]?.body|slice:0:190)+'...' : news[0]?.body}}
+                    </p>
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="homepage__latest__news">
+        <div class="container-fluid"
+            id="homepage__latest__news">
             <div class="row">
-                <div class="col-md-4" *ngFor="let newsItem of news">
-                    <app-news-card-home (newsClicked)="navigate($event)" [newsItem]="newsItem"></app-news-card-home>
+                <div class="col-md-4"
+                    *ngFor="let newsItem of news | slice:1:4">
+                    <app-news-card-home (newsClicked)="navigate($event)"
+                        [newsItem]="newsItem"></app-news-card-home>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a routerLink="./news" class="all__news__link">All News <i class="la la-arrow-right"></i></a>
+                    <a routerLink="./news"
+                        class="all__news__link">All News <i class="la la-arrow-right"></i></a>
                 </div>
             </div>
         </div>

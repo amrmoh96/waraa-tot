@@ -18,7 +18,7 @@
 
       iframe,
       img {
-        height: 505px;
+        height: 33.6rem;
         width: 100%;
         object-fit: cover;
       }
@@ -85,6 +85,10 @@
       font-family: $PlayfairDisplay-Bold;
       margin-bottom: 1.01rem;
       text-transform: uppercase;
+
+      @media screen and (max-width:426px) {
+        font-size: 2.2rem;
+      }
     }
   }
 
@@ -102,7 +106,7 @@
 
       img {
         height: 339px;
-        filter: contrast(1.5);
+        // filter: contrast(1.5);
       }
     }
   }

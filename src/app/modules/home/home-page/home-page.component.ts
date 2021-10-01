@@ -14,9 +14,12 @@ export class HomePageComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.newsService.getNews().then((res) => {
-			let startIndex = res.length - 3 || 0;
-			let endIndex = res.length || 3;
-			this.news = res.slice(startIndex, endIndex);
+			this.news = res.sort((a, b) => {
+				if (a && b) {
+					if (a.id && b.id) return a.id > b.id ? -1 : 1;
+				}
+				return 1;
+			});
 		});
 	}
 

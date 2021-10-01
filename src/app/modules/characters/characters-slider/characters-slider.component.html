@@ -1,6 +1,12 @@
 <div class="characters__slider">
     <div class=" characters__slider__single{{selectedChar?.firstname == char.firstname ? '-hidden':''}}"
-        *ngFor="let char of characters" (click)="navigate(char)">
+        *ngFor="let char of characters; let odd = odd" (click)="navigate(char)">
+        <img src="../../../../assets/images/wraa.png" *ngIf="odd" class="wraa__img" alt="">
+        <img src="../../../../assets/images/wraa.png" *ngIf="odd" class="wraa__img wraa__img__top__right" alt="">
+        <img src="../../../../assets/images/wraa.png" *ngIf="odd" class="wraa__img wraa__img__bottom__left" alt="">
+        <img src="../../../../assets/images/wraa2.png" *ngIf="!odd" class="wraa__img wraa__img__top__left" />
+        <img src="../../../../assets/images/wraa3.png" *ngIf="!odd" class="wraa__img wraa__img__bottom__center" />
+        <img src="../../../../assets/images/wraa3.png" *ngIf="!odd" class="wraa__img wraa__img__top-right__center" />
         <img src="{{char.profileURL}}" alt="">
         <p>{{char.firstname}}</p>
     </div>

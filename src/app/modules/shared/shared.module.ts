@@ -8,6 +8,8 @@ import { ScenceCardSmallComponent } from './scene-components/scence-card-small/s
 import { NewsCardHomeComponent } from './news-cards/news-card-home/news-card-home.component';
 import { RouterModule } from '@angular/router';
 import { CardImageComponent } from './scene-components/card-image/card-image.component';
+import { HelpFormComponent } from './help-form/help-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -17,9 +19,10 @@ import { CardImageComponent } from './scene-components/card-image/card-image.com
 		SceneCardWideComponent,
 		ScenceCardSmallComponent,
 		NewsCardHomeComponent,
-		CardImageComponent
+		CardImageComponent,
+		HelpFormComponent
 	],
-	imports: [ CommonModule, RouterModule ],
+	imports: [ CommonModule, RouterModule, FormsModule ],
 	exports: [
 		HeaderComponent,
 		FooterComponent,
@@ -27,7 +30,8 @@ import { CardImageComponent } from './scene-components/card-image/card-image.com
 		SceneCardWideComponent,
 		ScenceCardSmallComponent,
 		NewsCardHomeComponent,
-		CardImageComponent
+		CardImageComponent,
+		HelpFormComponent
 	]
 })
 export class SharedModule {}

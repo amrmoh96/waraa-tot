@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Media } from 'src/app/models/Media.model';
 import { MediaService } from 'src/app/services/media.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
 	selector: 'app-scene',
@@ -10,13 +12,27 @@ import { MediaService } from 'src/app/services/media.service';
 export class SceneComponent implements OnInit {
 	public mainScene: Media = {};
 	public scenes: Media[] = [];
-	constructor(private media: MediaService) {}
+	public isVideoPlaying: boolean = false;
+	constructor(private media: MediaService, private sanitizer: DomSanitizer, private utilityService: UtilityService) {}
 
 	ngOnInit(): void {
 		this.media.getAllMedia().then((res) => {
-			res = res.filter((M) => M.mediaType == 1);
+			res = res.filter((M) => M.mediaType == 2);
 			this.scenes = res.slice(1);
 			this.mainScene = res[0];
 		});
+	}
+	iFrameSRC() {
+		let _URL = `https://www.youtube.com/embed/${this.mainScene.youtubeId}`;
+		return this.sanitizer.bypassSecurityTrustResourceUrl(_URL);
+	}
+
+	playVideo() {
+		this.isVideoPlaying = true;
+		this.utilityService.bodyUnscrollable();
+	}
+	closeVideo() {
+		this.isVideoPlaying = false;
+		this.utilityService.bodyScrollable();
 	}
 }

@@ -1,6 +1,9 @@
 .all_news__page {
-  background: #000;
-  padding-top: 170px;
+  background: url('../../images/scene-bg.jpg');
+  padding-top: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .single__new__page {
@@ -19,10 +22,18 @@
 
   h1 {
     margin-bottom: 0;
+
+    @media screen and (max-width:426px) {
+      font-size: 4rem;
+    }
   }
 
   small {
     color: rgba($color: #ffffff, $alpha: .8);
+
+    @media screen and (max-width:426px) {
+      font-size: 2rem;
+    }
   }
 
   p {
@@ -30,5 +41,9 @@
     font-size: 1.2rem;
     letter-spacing: 1px;
     font-family: $NeueHaasDisplayLight;
+
+    @media screen and (max-width:426px) {
+      font-size: 3rem;
+    }
   }
 }

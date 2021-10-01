@@ -5,11 +5,16 @@
       overflow: hidden;
       border-radius: 5px;
 
+      @media screen and (max-width:426px) {
+        height: 20rem;
+      }
+
       img {
         height: 100%;
         width: 100%;
         object-fit: cover;
         transition: .3s all ease-in-out;
+        cursor: pointer;
 
         &:hover {
           transform: scale(1.05);
@@ -25,6 +30,10 @@
         font-size: .8rem;
         font-family: $NeueHaasDisplayRoman;
         margin-bottom: .79rem;
+
+        @media screen and (max-width:426px) {
+          font-size: 1.6rem;
+        }
       }
 
       .news__card__title {
@@ -32,11 +41,20 @@
         font-family: $NeueHaasDisplayBold;
         font-size: 1.325rem;
         margin-bottom: .5rem;
+        cursor: pointer;
+
+        @media screen and (max-width:426px) {
+          font-size: 2.65rem;
+        }
       }
 
       .news__card__date {
         font-size: .8rem;
         margin-bottom: 1.5rem;
+
+        @media screen and (max-width:426px) {
+          font-size: 1.6rem;
+        }
       }
 
       .news__card__description {
@@ -45,19 +63,37 @@
         color: #fff;
         line-height: 1.9rem;
         margin-bottom: .725rem;
+
+        @media screen and (max-width:426px) {
+          font-size: 2rem;
+        }
       }
 
       .news__card__link {
-        color: #F44336;
+        color: #FFF;
         font-size: .8rem;
         font-family: $NeueHaasDisplayBold;
         display: flex;
         align-items: center;
         cursor: pointer;
+        text-decoration: none;
+        transition: .2s all ease;
+
+        &:hover {
+          color: #F44336;
+        }
+
+        @media screen and (max-width:426px) {
+          font-size: 1.6rem;
+        }
 
         i {
           margin-right: .5rem;
           font-size: 1rem;
+
+          @media screen and (max-width:426px) {
+            font-size: 2rem;
+          }
         }
       }
     }

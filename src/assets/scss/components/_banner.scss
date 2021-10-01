@@ -35,6 +35,10 @@
             font-family: 'roboto';
             text-transform: capitalize;
 
+            @media screen and (max-width:426px) {
+              font-size: 2rem;
+            }
+
             &::after {
               content: "";
               position: absolute;
@@ -44,12 +48,12 @@
               height: 0;
               border: none;
               left: calc(50% - 2px);
-              transition: .5s all ease-in-out;
+              transition: .3s all ease-in-out;
             }
 
             &:hover {
               &::after {
-                height: 3.33rem;
+                height: 10rem;
               }
             }
           }
@@ -66,6 +70,10 @@
             transition: .5s all ease-in-out;
             font-size: .75rem;
             font-family: $NeueHaasDisplayLight;
+
+            @media screen and (max-width:426px) {
+              font-size: 1.5rem;
+            }
 
             &:hover {
               opacity: 1;
@@ -85,7 +93,11 @@
         font-weight: bold;
         line-height: 1;
         text-transform: uppercase;
-        letter-spacing: .8rem;
+        letter-spacing: 1px;
+
+        @media screen and (max-width:426px) {
+          font-size: 5.866rem;
+        }
       }
 
       .banner__description__area__text {
@@ -93,6 +105,11 @@
         margin-top: 6.2rem;
         position: relative;
         z-index: 1;
+
+        @media screen and (max-width:426px) {
+          font-size: 2.12rem;
+        }
+
         // padding-right: 11.33rem;
       }
     }
@@ -136,23 +153,23 @@
       position: relative;
 
     }
+    .banner__graphics__area__slider__container{
+      transition: .5s all ease-in;
+      transform: translateX(0);
+      display: flex;
+      flex-direction: row;
+    }
 
     .banner__graphics__area__character {
       width: 29.333rem;
       margin: auto;
       height: 40rem;
       object-fit: scale-down;
-      position: absolute;
+      // position: absolute;
       transition: .5s all ease;
-      transform: translateX(-1000px);
-      visibility: hidden;
-      opacity: 0;
-
-      &.active-slide {
-        transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-      }
+      // transform: translateX(-1000px);
+      // visibility: hidden;
+      // opacity: 0;
     }
 
     .banner__graphics__area__character__overlay {
@@ -187,6 +204,10 @@
       right: 0;
       width: 21.86rem;
 
+      @media screen and (max-width:426px) {
+        width: 31.8rem;
+      }
+
       .banner__graphics__area_behind__scence__header {
         display: flex;
         align-items: center;
@@ -198,6 +219,10 @@
           font-family: $PlayfairDisplay-Bold;
           color: #fff;
           margin-bottom: 0;
+
+          @media screen and (max-width:426px) {
+            font-size: 1.9rem;
+          }
         }
 
         .banner__graphics__area_behind__scence__header__arrows {
@@ -235,6 +260,10 @@
 
         .banner__graphics__area_behind__scence__content__scence__card {
           width: 10.53rem;
+
+          @media screen and (max-width:426px) {
+            width: 15.53rem;
+          }
 
           &:not(:last-child) {
             margin-right: .8rem;

@@ -1,0 +1,75 @@
+<div class="help__form">
+    <div class="help__form__container">
+        <div class="container">
+            <form #contactForm="ngForm"
+                (ngSubmit)="onSubmit(contactForm)"
+                novalidate>
+                <div class="form__row">
+                    <div class="input__group">
+                        <label for="firstname">First name <span>*</span></label>
+                        <input placeholder="Type your first name here..."
+                            type="text"
+                            ngModel
+                            name="firstname"
+                            #firstname="ngModel"
+                            required>
+                    </div>
+                    <div class="input__group">
+                        <label for="lastname">Last name <span>*</span></label>
+                        <input placeholder="Type your last name here..."
+                            type="text"
+                            ngModel
+                            name="lastname"
+                            #lastname="ngModel"
+                            required>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="input__group">
+                        <label for="mobilePhone">Mobile number (Optional)</label>
+                        <input placeholder="Type your number here..."
+                            type="text"
+                            ngModel
+                            name="mobilePhone"
+                            #mobilePhone="ngModel">
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="input__group">
+                        <label for="email">Email address <span>*</span></label>
+                        <input placeholder="Type your email here..."
+                            type="email"
+                            ngModel
+                            name="email"
+                            #email="ngModel"
+                            required>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="input__group">
+                        <label for="body">Your question <span>*</span></label>
+                        <textarea ngModel
+                            name="body"
+                            #body="ngModel"
+                            required
+                            id=""
+                            cols="30"
+                            rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="form__row button__row">
+                    <button class="btn btn-light">Submit</button>
+                </div>
+                <div class="success__message"
+                    *ngIf="this.submittedSuccessfully">
+                    <p>Thank you for contacting us</p>
+                </div>
+                <div class="success__message"
+                    *ngIf="formHasErrors">
+                    <p>Please fill in the required fields followed by (*)</p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

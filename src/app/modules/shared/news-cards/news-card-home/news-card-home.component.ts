@@ -13,35 +13,24 @@ import { environment } from 'src/environments/environment';
 })
 export class NewsCardHomeComponent implements OnInit {
 	@Input() newsItem: News = {};
-	public imgApi:string = environment.imgApi;
-	public newsImage:string = '';
-	@Output() newsClicked:EventEmitter<any> = new EventEmitter();
-	constructor(private newsMedia:NewsMediaService, private mediaService:MediaService, private tagService:TagsService) {}
+	public imgApi: string = environment.imgApi;
+	public newsImage: string = '';
+	@Output() newsClicked: EventEmitter<any> = new EventEmitter();
+	constructor(
+		private newsMedia: NewsMediaService,
+		private mediaService: MediaService,
+		private tagService: TagsService
+	) {}
 
 	ngOnInit(): void {
-		if(this.newsItem.id){
-			this.newsMedia.getNewsMediaById(this.newsItem.id).then(res => {
-				let _newsMedia:NewsMedia | undefined = res;
-				if(_newsMedia && _newsMedia.mediaId){
-					this.mediaService.getMediaById(_newsMedia.mediaId).then(media => {
-						console.log(media);
-						
-						if(media && media.id){
-							this.tagService.getTagsByMediaId(media.id).then(tags => {
-								let _tag = tags?.find(T => T.tag1 == 'news_image')
-								if(_tag){
-									this.newsImage = `${this.imgApi}/Media/GetMedia?id=${media.id}`;
-								}
-							})
-						}
-					})
-				}
-			})
+		if (this.newsItem.newsMedia) {
+			let media = this.newsItem.newsMedia[0];
+			this.newsImage = `${this.imgApi}/Media/GetMedia?id=${media.mediaId}`;
 		}
 	}
 
-	public navigate($event:Event){
+	public navigate($event: Event) {
 		$event.preventDefault();
-		this.newsClicked.emit({id:this.newsItem.id});
+		this.newsClicked.emit({ id: this.newsItem.id });
 	}
 }

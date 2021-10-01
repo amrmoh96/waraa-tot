@@ -32,7 +32,7 @@
     .navbar-nav {
       .nav-item {
         &:not(:last-child) {
-          margin-right: 3.3rem;
+          margin-right: 2.6rem;
         }
 
         .nav-link {
@@ -40,7 +40,7 @@
           font-family: $NeueHaasDisplayBold;
           color: #fff;
           position: relative;
-          word-spacing: 2px;
+          padding: 0;
 
           &::after {
             content: "";

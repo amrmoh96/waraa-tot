@@ -4,3 +4,12 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import './assets/scss/main.scss';
+
+body {
+  background: #000;
+}
+
+.btn-danger {
+  background: #F44336;
+  border-color: #F44336;
+}

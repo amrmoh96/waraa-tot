@@ -16,6 +16,8 @@ export class CharactersComponent implements OnInit {
 	public characters: Character[] = [];
 	public selectedChar: Character|undefined;
 	public imgApi:string = environment.imgApi;
+	public teachers: Character[] = [];
+	public students: Character[] = [];
 
 	constructor(
 		private characterService:CharacterService,
@@ -28,6 +30,7 @@ export class CharactersComponent implements OnInit {
 			this.characters = res;
 			for (let index = 0; index < this.characters.length; index++) {
 				const element = this.characters[index];
+				element.order = index +1;
 				if(element.id){
 					this.mediaService.getMediaByCharacterId(element.id).then(data => {
 						let _charMedia:Media[] = data;
@@ -38,6 +41,14 @@ export class CharactersComponent implements OnInit {
 									let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
 									if(main_img){
 										element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+										if(tags?.find(T => T.tag1 == 'teacher')){
+											this.teachers.push(element)
+											this.teachers = this.sortArray(this.teachers)
+										}
+										if(tags?.find(T => T.tag1 == 'student')){
+											this.students.push(element)
+											this.students = this.sortArray(this.students)
+										}
 									}
 								})
 							}
@@ -47,8 +58,15 @@ export class CharactersComponent implements OnInit {
 			}
 		});
 	}
+	
 	selectCharacter(char: Character) {
 		this.selectedChar = {}
-		this.selectedChar = char;``
+		this.selectedChar = char;
+	}
+
+	sortArray(arr:any[]){
+		return arr.sort((a,b) => {
+			return a-b
+		})
 	}
 }
