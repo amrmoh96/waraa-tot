@@ -18,28 +18,12 @@ export class SceneBehindComponent implements OnInit {
 	constructor(private media: MediaService, private tagsService: TagsService, private sanitizer:DomSanitizer, private utilityService:UtilityService) {}
 
 	ngOnInit(): void {
-		this.media.getAllMedia().then((res) => {
-			for (let index = 0; index < res.length; index++) {
-				const element = res[index];
-				if (element.id) {
-					this.tagsService.getTagsByMediaId(element.id).then((tags) => {
-						element.tags = tags;
-						if(index == 0){
-							if(element.mediaType == 1 && element.tags?.find(T => T.tag1 == 'behind_scences')){
-								this.mainScene = element;
-							}
-						}else{
-							if(element.mediaType == 1 && element.tags?.find(T => T.tag1 == 'behind_scences')){
-								this.scenes.push(element)
-							}
-							if(element.mediaType == 2 && element.tags?.find(T => T.tag1 == 'behind_scences')){
-								this.images.push(element)
-							}
-						}
-					});
-				}
-			}
-		});
+		this.media.getMediaByTagIds([8]).then(res => {
+			console.log(res);
+			this.scenes = res.filter(M => M.mediaType == 1);
+			this.images = res.filter(M => M.mediaType == 2);
+			this.mainScene = this.scenes[0];
+		})
 	}
 
 

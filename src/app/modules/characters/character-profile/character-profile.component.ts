@@ -38,24 +38,54 @@ export class CharacterProfileComponent implements OnInit {
 			this.characterService.getCharacterById(Number(P.id)).then((res) => {
 				this.character = res;
 			});
-			this.mediaService.getMediaByCharacterId(Number(P.id)).then((res) => {
-				for (let index = 0; index < res.length; index++) {
-					const element = res[index];
-					this.tagService.getTagsByMediaId(Number(element.id)).then((data) => {
-						element.tags = data;
-						if(element.tags?.find(T => T.tag1 == 'main_image')){
-							this.profileImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
-						}
-						if(element.tags?.find(T => T.tag1 == 'cover_image')){
-							this.coverImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
-						}
-						if(element.tags?.find(T => T.tag1 == 'scene_image') && element.mediaType == 2){
-							this.charImages.push(element);
-						}
-					});
-				}
+			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[4]}).then(res => {
+				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${res[0].id}`;
+			})
+			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[5]}).then(res => {
+				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${res[0].id}`;
+			})
+			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[7,9]}).then(res => {
+				this.charImages = res.filter((M) => M.mediaType == 2);
 				this.charVideos = res.filter((M) => M.mediaType == 1);
-			});
+			})
+			// this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[4,5,7,9]}).then(res => {
+			// 	console.log(res);
+			// 	for (let index = 0; index < res.length; index++) {
+			// 		const element = res[index];
+			// 		this.tagService.getTagsByMediaId(Number(element.id)).then((data) => {
+			// 			element.tags = data;
+			// 			if(element.tags?.find(T => T.tag1 == 'main_image')){
+			// 				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
+			// 			}
+			// 			if(element.tags?.find(T => T.tag1 == 'cover_image')){
+			// 				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
+			// 			}
+			// 			if(element.tags?.find(T => T.tag1 == 'scene_image') && element.mediaType == 2){
+			// 				this.charImages.push(element);
+			// 			}
+			// 		});
+			// 	}
+			// 	this.charVideos = res.filter((M) => M.mediaType == 1);
+				
+			// })
+			// this.mediaService.getMediaByCharacterId(Number(P.id)).then((res) => {
+			// 	for (let index = 0; index < res.length; index++) {
+			// 		const element = res[index];
+			// 		this.tagService.getTagsByMediaId(Number(element.id)).then((data) => {
+			// 			element.tags = data;
+			// 			if(element.tags?.find(T => T.tag1 == 'main_image')){
+			// 				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
+			// 			}
+			// 			if(element.tags?.find(T => T.tag1 == 'cover_image')){
+			// 				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${element.id}`;
+			// 			}
+			// 			if(element.tags?.find(T => T.tag1 == 'scene_image') && element.mediaType == 2){
+			// 				this.charImages.push(element);
+			// 			}
+			// 		});
+			// 	}
+			// 	this.charVideos = res.filter((M) => M.mediaType == 1);
+			// });
 		});
 	}
 }

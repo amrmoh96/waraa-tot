@@ -19,7 +19,7 @@
             </div>
             <h2 class="scene__page__scenes__title">Videos</h2>
             <div class="row">
-                <div class="col-md-4 mb-4" *ngFor="let scene of scenes">
+                <div class="col-md-4 mb-4" *ngFor="let scene of scenes | slice : 1">
                     <app-scene-card [video]="scene"></app-scene-card>
                 </div>
             </div>

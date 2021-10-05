@@ -16,8 +16,8 @@ export class SceneComponent implements OnInit {
 	constructor(private media: MediaService, private sanitizer: DomSanitizer, private utilityService: UtilityService) {}
 
 	ngOnInit(): void {
-		this.media.getAllMedia().then((res) => {
-			res = res.filter((M) => M.mediaType == 2);
+		this.media.getMediaByTagIds([7]).then((res) => {
+			// res = res.filter((M) => M.mediaType == 2);
 			this.scenes = res.slice(1);
 			this.mainScene = res[0];
 		});

@@ -31,18 +31,18 @@ export class CharactersSliderComponent implements OnInit {
 			for (let index = 0; index < this.characters.length; index++) {
 				const element = this.characters[index];
 				if(element.id){
-					this.mediaService.getMediaByCharacterId(element.id).then(data => {
+					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[10,11]}).then(data => {
 						let _charMedia:Media[] = data;
 						for (let i = 0; i < _charMedia.length; i++) {
 							const mediaElement = _charMedia[i];
-							if(mediaElement.id){
-								this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
-									let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
-									if(main_img){
-										element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
-									}
-								})
-							}
+							element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+							// if(mediaElement.id){
+							// 	this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
+							// 		let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
+							// 		if(main_img){
+							// 		}
+							// 	})
+							// }
 						}
 					})
 				}

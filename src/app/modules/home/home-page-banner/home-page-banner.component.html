@@ -27,7 +27,7 @@
         </div>
         <div class="banner__graphics__area">
             <div class="banner__graphics__area__slider__dots">
-                <span *ngFor="let char of  characters;let i = index"
+                <span *ngFor="let m of media;let i = index"
                     class="banner__graphics__area__slider__dots__dot"
                     [class.active-dot]="activeSlide == i"
                     (click)="slide(i)"></span>
@@ -35,8 +35,8 @@
             <div class="banner__graphics__area__slider">
                 <div class="banner__graphics__area__slider__container"
                     [ngStyle]="style">
-                    <img *ngFor="let char of  characters;let i = index"
-                        src="{{char?.profileURL}}"
+                    <img *ngFor="let m of media;let i = index"
+                        src="{{imgApi+'/Media/GetMedia?id='+m.id}}"
                         [class.active-slide]="activeSlide == i"
                         class="banner__graphics__area__character"
                         alt="Character">

@@ -32,25 +32,36 @@ export class CharactersComponent implements OnInit {
 				const element = this.characters[index];
 				element.order = index +1;
 				if(element.id){
-					this.mediaService.getMediaByCharacterId(element.id).then(data => {
+					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[10]}).then(data => {
 						let _charMedia:Media[] = data;
 						for (let i = 0; i < _charMedia.length; i++) {
 							const mediaElement = _charMedia[i];
 							if(mediaElement.id){
-								this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
-									let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
-									if(main_img){
-										element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
-										if(tags?.find(T => T.tag1 == 'teacher')){
-											this.teachers.push(element)
-											this.teachers = this.sortArray(this.teachers)
-										}
-										if(tags?.find(T => T.tag1 == 'student')){
-											this.students.push(element)
-											this.students = this.sortArray(this.students)
-										}
-									}
-								})
+								element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+								this.teachers.push(element)
+								this.teachers = this.sortArray(this.teachers)
+								// this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
+								// 	let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
+								// 	if(main_img){
+								// 		if(tags?.find(T => T.tag1 == 'teacher')){
+								// 		}
+								// 		if(tags?.find(T => T.tag1 == 'student')){
+								// 			this.students.push(element)
+								// 			this.students = this.sortArray(this.students)
+								// 		}
+								// 	}
+								// })
+							}
+						}
+					})
+					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[11]}).then(data => {
+						let _charMedia:Media[] = data;
+						for (let i = 0; i < _charMedia.length; i++) {
+							const mediaElement = _charMedia[i];
+							if(mediaElement.id){
+								element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+								this.students.push(element)
+								this.students = this.sortArray(this.students)
 							}
 						}
 					})
@@ -64,9 +75,9 @@ export class CharactersComponent implements OnInit {
 		this.selectedChar = char;
 	}
 
-	sortArray(arr:any[]){
+	sortArray(arr:Character[]){
 		return arr.sort((a,b) => {
-			return a-b
+			return (a.id || 0) - (b?.id || 0)
 		})
 	}
 }

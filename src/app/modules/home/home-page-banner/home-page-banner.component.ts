@@ -19,6 +19,7 @@ export class HomePageBannerComponent implements OnInit {
 	public translate:number = 0;
 	public style = {'transform': 'translateX(0)' }
 	public interval:any;
+	public media:Media[] = [];
 	constructor(
 		private characterService:CharacterService,
 		private mediaService:MediaService,
@@ -26,29 +27,9 @@ export class HomePageBannerComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.characterService.getCharacters().then(res => {
-			this.characters = res;
-      
-			for (let index = 0; index < this.characters.length; index++) {
-				const element = this.characters[index];
-				if(element.id){
-					this.mediaService.getMediaByCharacterId(element.id).then(data => {
-						let _charMedia:Media[] = data;
-						for (let i = 0; i < _charMedia.length; i++) {
-							const mediaElement = _charMedia[i];
-							if(mediaElement.id){
-								this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
-									let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
-									if(main_img){
-										element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
-									}
-								})
-							}
-						}
-					})
-				}
-			}
-		});
+		this.mediaService.getMediaByTagIds([12]).then(res => {
+			this.media = res;
+		})
 	}
 
 	scrollToNews($event: Event) {

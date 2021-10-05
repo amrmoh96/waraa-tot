@@ -71,4 +71,24 @@ export class MediaService {
 				return data;
 			});
 	}
+
+	public getMediaByTagIds(ids:number[]): Promise<Media[]> {
+		return this.http
+			.post<Media[]>(`${this.api}/Media/GetByTagIds`, ids)
+			.toPromise()
+			.then((res) => <Media[]>res)
+			.then((data) => {
+				return data;
+			});
+	}
+
+	public GetByCharacterAndTags(model:any): Promise<Media[]> {
+		return this.http
+			.post<Media[]>(`${this.api}/Media/GetByCharacterAndTag`, model)
+			.toPromise()
+			.then((res) => <Media[]>res)
+			.then((data) => {
+				return data;
+			});
+	}
 }
