@@ -41,13 +41,11 @@ export class HomePageBannerComponent implements OnInit {
 		this.translate = -1*slide*29.33;
 		this.activeSlide = slide;
 		this.style = {'transform': `translateX(${this.translate}rem)` }
-		console.log(this.style);
-		
 	}
 
 	ngAfterViewInit(){
 		this.interval = setInterval(() => {
-			if(this.activeSlide == this.characters?.length-1){
+			if(this.activeSlide == this.media?.length-1){
 				this.slide(0)
 			}else{
 				this.slide(this.activeSlide+1);

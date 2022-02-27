@@ -39,10 +39,10 @@ export class CharacterProfileComponent implements OnInit {
 				this.character = res;
 			});
 			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[4]}).then(res => {
-				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${res[0].id}`;
+				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${res[0]?.id}`;
 			})
 			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[5]}).then(res => {
-				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${res[0].id}`;
+				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${res[0]?.id}`;
 			})
 			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[7,9]}).then(res => {
 				this.charImages = res.filter((M) => M.mediaType == 2);

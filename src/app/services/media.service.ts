@@ -91,4 +91,14 @@ export class MediaService {
 				return data;
 			});
 	}
+
+	public GetByCharacter(model:any): Promise<Media[]> {
+		return this.http
+			.post<Media[]>(`${this.api}/Media/GetByCharacter`, model)
+			.toPromise()
+			.then((res) => <Media[]>res)
+			.then((data) => {
+				return data;
+			});
+	}
 }
