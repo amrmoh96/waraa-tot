@@ -45,15 +45,15 @@
             <img src="../../../../assets/images/char-overlay.png"
                 class="banner__graphics__area__character__overlay"
                 alt="Character Overlay">
-            <!-- <div class="banner__graphics__area_behind__scence">
+            <div class="banner__graphics__area_behind__scence">
                 <div class="banner__graphics__area_behind__scence__header">
                     <p class="banner__graphics__area_behind__scence__header__title">Watch Behind The Scence</p>
                     <div class="banner__graphics__area_behind__scence__header__arrows">
-                        <div (click)="slide(1)"
+                        <div (click)="slide(activeSlide-1)"
                             class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__left">
                             <i class="la la-angle-left"></i>
                         </div>
-                        <div (click)="slide(2)"
+                        <div (click)="slide(activeSlide+1)"
                             class="banner__graphics__area_behind__scence__header__arrows__arrow banner__graphics__area_behind__scence__header__arrows__arrow__right">
                             <i class="la la-angle-right"></i>
                         </div>
@@ -67,7 +67,7 @@
                         <app-scence-card-small></app-scence-card-small>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>

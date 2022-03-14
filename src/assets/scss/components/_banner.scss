@@ -129,11 +129,11 @@
       flex-direction: column;
 
       .banner__graphics__area__slider__dots__dot {
-        width: .8rem;
-        height: .8rem;
+        width: .5rem;
+        height: .5rem;
         background: transparent;
         border-radius: 50%;
-        border: 2px solid #fff;
+        border: 1px solid #fff;
         transition: .5s all ease;
         margin-bottom: .6rem;
         cursor: pointer;
