@@ -2,15 +2,16 @@
     <div class="character__profile__banner">
         <div class="character__profile__banner__overlay"></div>
         <div class="character__profile__banner__overlay__reversed"></div>
-        <div class="character__profile__banner__image__overlay " *ngIf="coverImage">
+        <div class="character__profile__banner__image__overlay "
+            *ngIf="coverImage">
             <img src="{{coverImage}}"
                 alt="">
         </div>
         <div class="container-fluid">
             <div class="character__profile__banner__content__area">
                 <h1>{{character?.firstname}} {{character?.lastname}}</h1>
-                <h3>{{character?.intro}}</h3>
                 <p>{{character?.about | slice:0:360}}</p>
+                <!-- <p>{{character?.about | slice:0:360}}</p> -->
                 <button class="btn btn-danger">Ask me</button>
             </div>
             <div class="character__profile__banner__user__image"
@@ -25,8 +26,15 @@
             <h2 class="character__profile__scenes__title">Marwan scenes</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
-                    *ngFor="let vid of charVideos">
+                    *ngFor="let vid of charVideos|slice:0:vidSize">
                     <app-scene-card [video]="vid"></app-scene-card>
+                </div>
+            </div>
+            <div class="row"
+                *ngIf="(charVideos?.length || 0) > vidSize">
+                <div class="col-12 text-center my-3">
+                    <button class="btn btn-danger load__more__btn"
+                        (click)="LoadMoreVid()">Load More</button>
                 </div>
             </div>
         </div>
@@ -36,8 +44,15 @@
             <h2 class="character__profile__scenes__title">Marwan Images</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
-                    *ngFor="let img of charImages">
+                    *ngFor="let img of charImages | slice:0:loadSize">
                     <app-card-image [image]="img"></app-card-image>
+                </div>
+            </div>
+            <div class="row"
+                *ngIf="(charImages?.length || 0) > loadSize">
+                <div class="col-12 text-center my-3">
+                    <button class="btn btn-danger load__more__btn"
+                        (click)="LoadMoreVid()">Load More</button>
                 </div>
             </div>
         </div>

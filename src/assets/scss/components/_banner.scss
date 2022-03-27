@@ -1,5 +1,6 @@
 .banner {
   color: #fff;
+  height: calc(100vh - 7.5rem);
 
   @media only screen and (max-width:480px) {
     flex-direction: column;
@@ -28,11 +29,9 @@
 
           a {
             color: #fff;
-            font-weight: bold;
             text-decoration: none;
             position: relative;
             font-size: 1rem;
-            font-family: 'roboto';
             text-transform: capitalize;
 
             @media screen and (max-width:426px) {
@@ -117,16 +116,18 @@
 
   .banner__graphics__area {
     flex-basis: 50%;
+    width: 50%;
     display: flex;
     position: relative;
     justify-content: center;
 
     .banner__graphics__area__slider__dots {
       position: absolute;
-      top: 20%;
+      top: 10%;
       right: 3%;
       display: flex;
       flex-direction: column;
+      z-index: 1;
 
       .banner__graphics__area__slider__dots__dot {
         width: .5rem;
@@ -147,29 +148,33 @@
 
     .banner__graphics__area__slider {
       display: flex;
-      width: 26.666rem;
-      height: 40rem;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       position: relative;
 
     }
-    .banner__graphics__area__slider__container{
-      transition: .5s all ease-in;
+
+    .banner__graphics__area__slider__container {
+      transition: .5s all ease;
       transform: translateX(0);
       display: flex;
       flex-direction: row;
+      position: absolute;
     }
 
     .banner__graphics__area__character {
-      width: 29.333rem;
+      width: 40rem;
+      height: 70rem;
       margin: auto;
-      height: 40rem;
       object-fit: scale-down;
-      // position: absolute;
-      transition: .5s all ease;
-      // transform: translateX(-1000px);
-      // visibility: hidden;
-      // opacity: 0;
+      object-position: top;
+      transition: 1s all ease-in-out;
+      opacity: 0;
+
+      &.active-slide {
+        opacity: 1;
+      }
     }
 
     .banner__graphics__area__character__overlay {
@@ -232,7 +237,7 @@
           .banner__graphics__area_behind__scence__header__arrows__arrow {
             width: 2.09rem;
             height: 2.09rem;
-            border: 1px dashed #fff;
+            border: 1px dashed rgba($color: #ffffff, $alpha: .1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -245,7 +250,7 @@
             }
 
             &:hover {
-              border-color: #F44336;
+              // border-color: #F44336;
               color: #F44336;
             }
 

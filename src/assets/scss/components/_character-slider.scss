@@ -42,6 +42,9 @@
       object-fit: scale-down;
       position: relative;
       z-index: 2;
+      @media only screen and (max-width:767px) {
+        height: 30rem;
+      }
     }
 
     .wraa__img {

@@ -6,6 +6,9 @@ import { CharacterService } from 'src/app/services/character.service';
 import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
+import SwiperCore, { EffectCoverflow, EffectFade, Swiper } from 'swiper';
+
+SwiperCore.use([EffectCoverflow]);
 
 @Component({
 	selector: 'app-characters',
@@ -32,7 +35,7 @@ export class CharactersComponent implements OnInit {
 				const element = this.characters[index];
 				element.order = index +1;
 				if(element.id){
-					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[10]}).then(data => {
+					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[10,11]}).then(data => {
 						let _charMedia:Media[] = data;
 						for (let i = 0; i < _charMedia.length; i++) {
 							const mediaElement = _charMedia[i];
@@ -80,4 +83,10 @@ export class CharactersComponent implements OnInit {
 			return (a.id || 0) - (b?.id || 0)
 		})
 	}
+	onSwiper([swiper]:any) {
+		console.log(swiper);
+	  }
+	  onSlideChange() {
+		console.log('slide change');
+	  }
 }

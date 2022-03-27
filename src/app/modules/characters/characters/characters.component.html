@@ -1,59 +1,71 @@
 <div class="characters__page">
-    <div class="characters__page__teachers d-lg-block d-none">
-        <div class="characters__page__selected__character"
-            *ngIf="selectedChar">
-            <div class="characters__page__selected__character__name">
-                <p>{{selectedChar.firstname}}</p>
-                <button class="btn btn-danger"
-                    routerLink="profile/{{selectedChar.id}}">Character Profile</button>
-            </div>
-            <div class="characters__page__selected__character__image">
-                <img src="{{selectedChar.profileURL}}"
-                    alt="">
-            </div>
-        </div>
-        <h1 class="characters__page__characters__title{{selectedChar?'__selected':''}}">Teachers</h1>
-        <div class="characters__page__characters{{selectedChar?'__selected':''}}">
-            <div class=" characters__page__characters__single{{selectedChar?.firstname == char.firstname ? '-hidden':''}}"
-                *ngFor="let char of teachers | slice:0:6">
-                <img src="{{char.profileURL}}"
-                    alt=""
-                    (click)="selectCharacter(char)">
-                <p>{{char.firstname}}</p>
-            </div>
-        </div>
-    </div>
-    <div class="characters__page__characters__students d-lg-none d-md-block"
-        style="padding-top: 21rem;"
-        *ngIf="(teachers || []).length > 0">
-        <div class="characters__page__characters__students__title">
-            <h1>Teachers</h1>
-        </div>
-        <div class="characters__page__characters__students__container">
-            <div class=" characters__page__characters__single"
-                routerLink="profile/{{char.id}}"
-                *ngFor="let char of teachers | slice:0:6">
-                <img src="{{char.profileURL}}"
-                    alt=""
-                    (click)="selectCharacter(char)">
-                <p>{{char.firstname}}</p>
-            </div>
-        </div>
-    </div>
     <div class="characters__page__characters__students"
+        style="padding-top: 7.5rem;"
+        *ngIf="(teachers || []).length > 0">
+        <!-- <div class="characters__page__characters__students__title">
+            <h1>Teachers</h1>
+        </div> -->
+        <div>
+            <swiper [effect]="'coverflow'"
+                [grabCursor]="true"
+                [centeredSlides]="false"
+                [slidesPerView]="3"
+                [coverflowEffect]="{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true
+            }"
+                [pagination]="true"
+                (swiper)="onSwiper($event)"
+                (slideChange)="onSlideChange()">
+                <ng-template swiperSlide
+                    *ngFor="let char of teachers">
+                    <div class="text-center"
+                        routerLink="profile/{{char.id}}">
+                        <img style="width: 40rem; height: 50rem;object-fit: contain;"
+                            src="{{char.profileURL}}"
+                            alt=""
+                            (click)="selectCharacter(char)">
+                        <!-- <p>{{char.firstname}}</p> -->
+                    </div>
+                </ng-template>
+            </swiper>
+        </div>
+        <!-- <div class="characters__page__characters__students__container">
+            <div class="row">
+                <div class="col-md-4"
+                    *ngFor="let char of teachers | slice:0:6">
+                    <div class=" characters__page__characters__single"
+                        routerLink="profile/{{char.id}}">
+                        <img src="{{char.profileURL}}"
+                            alt=""
+                            (click)="selectCharacter(char)">
+                        <p>{{char.firstname}}</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <!-- <div class="characters__page__characters__students"
         *ngIf="(students || []).length > 0">
         <div class="characters__page__characters__students__title">
             <h1>Students</h1>
         </div>
         <div class="characters__page__characters__students__container">
-            <div class=" characters__page__characters__single"
-                routerLink="profile/{{char.id}}"
-                *ngFor="let char of students | slice:0:6">
-                <img src="{{char.profileURL}}"
-                    alt=""
-                    (click)="selectCharacter(char)">
-                <p>{{char.firstname}}</p>
+            <div class="row">
+                <div class="col-md-4"
+                    *ngFor="let char of students | slice:0:6">
+                    <div class=" characters__page__characters__single"
+                        routerLink="profile/{{char.id}}">
+                        <img src="{{char.profileURL}}"
+                            alt=""
+                            (click)="selectCharacter(char)">
+                        <p>{{char.firstname}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

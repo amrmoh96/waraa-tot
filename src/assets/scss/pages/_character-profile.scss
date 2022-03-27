@@ -138,13 +138,12 @@
   }
 
   .character__profile__scenes {
-    padding: 6rem 0;
+    padding: 0 0 6rem;
     background: url('../../images/scene-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: #fff;
-    padding-bottom: 8rem;
 
     &:last-child {
       background: url('../../images/images-bg.jpg');
@@ -211,4 +210,8 @@
     background: #000;
     padding: 2rem 0;
   }
+}
+
+.card__image .card__image__img img {
+  height: 15.4rem;
 }

@@ -37,7 +37,7 @@
 
         .nav-link {
           font-size: .8rem;
-          font-family: $NeueHaasDisplayBold;
+          font-family: $NeueHaasDisplayMediu;
           color: #fff;
           position: relative;
           padding: 0;
@@ -64,9 +64,10 @@
   }
 
   .btn.btn-danger {
-    font-family: 'NeueHaasDisplayBold';
+    font-family: $NeueHaasDisplayMediu;
     outline: none !important;
     box-shadow: none !important;
+    font-size: .9rem;
   }
 }
 

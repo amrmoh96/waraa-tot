@@ -10,21 +10,21 @@ import { environment } from 'src/environments/environment';
 @Component({
 	selector: 'app-home-page-banner',
 	templateUrl: './home-page-banner.component.html',
-	styleUrls: [ './home-page-banner.component.scss' ]
+	styleUrls: ['./home-page-banner.component.scss']
 })
 export class HomePageBannerComponent implements OnInit {
 	public characters: Character[] = [];
-	public activeSlide:number = 0;
-	public imgApi:string = environment.imgApi;
-	public translate:number = 0;
-	public style = {'transform': 'translateX(0)' }
-	public interval:any;
-	public media:Media[] = [];
+	public activeSlide: number = 0;
+	public imgApi: string = environment.imgApi;
+	public translate: number = 0;
+	public style = { 'transform': 'translateX(0)' }
+	public interval: any;
+	public media: Media[] = [];
 	constructor(
-		private characterService:CharacterService,
-		private mediaService:MediaService,
-		private tagService:TagsService,
-	) {}
+		private characterService: CharacterService,
+		private mediaService: MediaService,
+		private tagService: TagsService,
+	) { }
 
 	ngOnInit(): void {
 		this.mediaService.getMediaByTagIds([12]).then(res => {
@@ -34,26 +34,26 @@ export class HomePageBannerComponent implements OnInit {
 
 	scrollToNews($event: Event) {
 		$event.preventDefault();
-		document.getElementById('homepage__latest__news')?.scrollIntoView({behavior:"smooth", block:'nearest'})
+		window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
 	}
 
-	slide(slide:number = 1){
-		this.translate = -1*slide*29.33;
+	slide(slide: number = 1) {
+		this.translate = -1 * slide * 40;
 		this.activeSlide = slide;
-		this.style = {'transform': `translateX(${this.translate}rem)` }
+		this.style = { 'transform': `translateX(${this.translate}rem)` }
 	}
 
-	ngAfterViewInit(){
+	ngAfterViewInit() {
 		this.interval = setInterval(() => {
-			if(this.activeSlide == this.media?.length-1){
+			if (this.activeSlide == this.media?.length - 1) {
 				this.slide(0)
-			}else{
-				this.slide(this.activeSlide+1);
+			} else {
+				this.slide(this.activeSlide + 1);
 			}
 		}, 3000)
 	}
 
-	ngOnDestroy(){
+	ngOnDestroy() {
 		clearInterval(this.interval)
 	}
 }

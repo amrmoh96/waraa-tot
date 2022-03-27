@@ -1,3 +1,7 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 html {
   font-size: 15px;
 
@@ -38,4 +42,10 @@ body.no-scroll {
 
 .btn {
   border-radius: .5rem;
+}
+
+.load__more__btn {
+  @media screen and (max-width:767px) {
+    font-size: 2rem;
+  }
 }

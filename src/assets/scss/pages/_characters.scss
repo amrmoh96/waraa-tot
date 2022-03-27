@@ -296,17 +296,17 @@
       flex-wrap: wrap;
       padding: 50px;
       align-items: flex-end;
-      justify-content: space-between;
+      justify-content: center;
 
       .characters__page__characters__single {
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
         position: relative;
         cursor: pointer;
 
         img {
-          width: 250px;
+          width: 400px;
           object-fit: scale-down;
-          height: 250px;
+          height: 400px;
         }
 
         p {

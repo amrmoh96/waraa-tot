@@ -1,13 +1,18 @@
 <div class="news__card news__card__home__page">
-    <div class="news__card__img__container" (click)="navigate($event)">
-        <img src="{{newsImage}}" alt="">
+    <div class="news__card__img__container"
+        (click)="navigate($event)">
+        <img src="{{newsImage}}"
+            alt="">
     </div>
     <div class="new__card__content">
         <p class="news__card__tags">News, Art</p>
-        <p class="news__card__title" (click)="navigate($event)">{{newsItem?.title}}</p>
+        <p class="news__card__title"
+            (click)="navigate($event)">{{newsItem?.title}}</p>
         <p class="news__card__date">{{newsItem?.creationDate | date : 'MMM d, y'}}</p>
-        <p class="news__card__description">{{newsItem?.body}}</p>
-        <a (click)="navigate($event)" class="news__card__link">
+        <p class="news__card__description">{{newsItem?.body | slice:0:150}}{{((newsItem?.body)?.length || 0) > 150 ?
+            '...' : ''}}</p>
+        <a (click)="navigate($event)"
+            class="news__card__link">
             <i class="la la-arrow-right"></i>
             READ MORE
         </a>

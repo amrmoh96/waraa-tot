@@ -19,11 +19,31 @@
                         alt="">
                 </div>
             </div>
-            <h2 class="scene__page__scenes__title">More Scenes</h2>
+            <h2 class="scene__page__scenes__title">Videos</h2>
+            <div class="row mb-3">
+                <div class="col-md-4 mb-4" *ngFor="let video of Videos | slice : 1:vidSize">
+                    <app-scene-card [video]="video"></app-scene-card>
+                </div>
+            </div>
+            <div class="row"
+                *ngIf="((Videos?.length || 0) > 6 && (Videos?.length || 0) > vidSize)">
+                <div class="col-12 text-center my-3">
+                    <button class="btn btn-danger load__more__btn"
+                        (click)="LoadMoreVid()">Load More</button>
+                </div>
+            </div>
+            <h2 class="scene__page__scenes__title">Images</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
-                    *ngFor="let scene of scenes">
+                    *ngFor="let scene of scenes | slice:0:loadSize">
                     <app-card-image [image]="scene"></app-card-image>
+                </div>
+            </div>
+            <div class="row"
+                *ngIf="((scenes?.length || 0) > 6 && (scenes?.length || 0) > loadSize)">
+                <div class="col-12 text-center my-3">
+                    <button class="btn btn-danger load__more__btn"
+                        (click)="LoadMore()">Load More</button>
                 </div>
             </div>
         </div>

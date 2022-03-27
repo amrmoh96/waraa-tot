@@ -2,25 +2,39 @@
     <div class="scene__page__scenes">
         <div class="container-fluid">
             <h2 class="scene__page__scenes__title">behind the Scenes</h2>
-            <div class="scene__page__scenes__main__scene" *ngIf="mainScene">
-                <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
+            <div class="scene__page__scenes__main__scene"
+                *ngIf="mainScene">
+                <iframe [src]="iFrameSRC()"
+                    title="YouTube video player"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
-                <div class="scene__page__scenes__main__scene__title" >
+                <div class="scene__page__scenes__main__scene__title">
                     <div class="play">
-                        <img src="../../../../assets/images/play-red.png" alt="">
+                        <img src="../../../../assets/images/play-red.png"
+                            alt="">
                         <p>Watch Video</p>
                     </div>
                     <h1>{{mainScene?.title}}</h1>
                 </div>
-                <div class="scene__page__scenes__main__scene__play" (click)="playVideo()">
-                    <img src="../../../../assets/images/scene-pplay.png" alt="">
+                <div class="scene__page__scenes__main__scene__play"
+                    (click)="playVideo()">
+                    <img src="../../../../assets/images/scene-pplay.png"
+                        alt="">
                 </div>
             </div>
             <h2 class="scene__page__scenes__title">Videos</h2>
             <div class="row">
-                <div class="col-md-4 mb-4" *ngFor="let scene of scenes | slice : 1">
+                <div class="col-md-4 mb-4"
+                    *ngFor="let scene of scenes | slice : 1:vidSize">
                     <app-scene-card [video]="scene"></app-scene-card>
+                </div>
+                <div class="row"
+                    *ngIf="((scenes?.length || 0) > 6 && (scenes?.length || 0) > vidSize)">
+                    <div class="col-12 text-center my-3">
+                        <button class="btn btn-danger load__more__btn"
+                            (click)="LoadMoreVid()">Load More</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,18 +43,31 @@
         <div class="container-fluid">
             <h2 class="scene__page__scenes__title">Images</h2>
             <div class="row">
-                <div class="col-md-4 mb-4" *ngFor="let img of images">
+                <div class="col-md-4 mb-4"
+                    *ngFor="let img of images | slice:0:loadSize">
                     <app-card-image [image]="img"></app-card-image>
+                </div>
+            </div>
+            <div class="row"
+                *ngIf="((images?.length || 0) > 6 && (images?.length || 0) > loadSize)">
+                <div class="col-12 text-center my-3">
+                    <button class="btn btn-danger load__more__btn"
+                        (click)="LoadMore()">Load More</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="video__player__container" *ngIf="isVideoPlaying">
+<div class="video__player__container"
+    *ngIf="isVideoPlaying">
     <div class="video__player__container__content">
-        <i (click)="closeVideo()" class="la la-times"></i>
-        <iframe [src]="iFrameSRC()" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <i (click)="closeVideo()"
+            class="la la-times"></i>
+        <iframe [src]="iFrameSRC()"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character } from 'src/app/models/Character.model';
 import { Media } from 'src/app/models/Media.model';
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 @Component({
 	selector: 'app-character-profile',
 	templateUrl: './character-profile.component.html',
-	styleUrls: [ './character-profile.component.scss' ]
+	styleUrls: ['./character-profile.component.scss']
 })
 export class CharacterProfileComponent implements OnInit {
 	public character: Character | undefined = {};
@@ -20,6 +20,8 @@ export class CharacterProfileComponent implements OnInit {
 	public imgApi: string = environment.imgApi;
 	public profileImage?: string = '';
 	public coverImage?: string = '';
+	loadSize: number = 6;
+	vidSize: number = 6;
 	constructor(
 		private characterService: CharacterService,
 		private mediaService: MediaService,
@@ -27,7 +29,8 @@ export class CharacterProfileComponent implements OnInit {
 		private tagService: TagsService,
 		private activeRoute: ActivatedRoute
 	) {
-		window.scroll(0,0)
+		this.resetLoadSize()
+		window.scroll(0, 0)
 	}
 
 	ngOnInit(): void {
@@ -38,13 +41,15 @@ export class CharacterProfileComponent implements OnInit {
 			this.characterService.getCharacterById(Number(P.id)).then((res) => {
 				this.character = res;
 			});
-			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[4]}).then(res => {
+			this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(P.id), 'TagIds': [4] }).then(res => {
 				this.profileImage = `${this.imgApi}/Media/GetMedia?id=${res[0]?.id}`;
 			})
-			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[5]}).then(res => {
-				this.coverImage = `${this.imgApi}/Media/GetMedia?id=${res[0]?.id}`;
+			this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(P.id), 'TagIds': [5] }).then(res => {
+				if (res && res[0] && res[0].id) {
+					this.coverImage = `${this.imgApi}/Media/GetMedia?id=${res[0]?.id}`;
+				}
 			})
-			this.mediaService.GetByCharacterAndTags({'CharacterID':Number(P.id),'TagIds':[7,9]}).then(res => {
+			this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(P.id), 'TagIds': [7, 8, 9] }).then(res => {
 				this.charImages = res.filter((M) => M.mediaType == 2);
 				this.charVideos = res.filter((M) => M.mediaType == 1);
 			})
@@ -66,7 +71,7 @@ export class CharacterProfileComponent implements OnInit {
 			// 		});
 			// 	}
 			// 	this.charVideos = res.filter((M) => M.mediaType == 1);
-				
+
 			// })
 			// this.mediaService.getMediaByCharacterId(Number(P.id)).then((res) => {
 			// 	for (let index = 0; index < res.length; index++) {
@@ -87,5 +92,26 @@ export class CharacterProfileComponent implements OnInit {
 			// 	this.charVideos = res.filter((M) => M.mediaType == 1);
 			// });
 		});
+	}
+	@HostListener('window:resize', ['$event'])
+	onResize(event: any) {
+		this.resetLoadSize()
+	}
+	resetLoadSize() {
+		if (this.isMobile()) {
+			this.loadSize = this.vidSize = 3;
+		}
+	}
+	isMobile(): boolean {
+		if (window.innerWidth <= 991) {
+			return true
+		}
+		return false
+	}
+	LoadMore() {
+		this.loadSize += 3;
+	}
+	LoadMoreVid() {
+		this.vidSize += 3;
 	}
 }

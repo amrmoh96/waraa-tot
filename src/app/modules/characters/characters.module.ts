@@ -6,6 +6,8 @@ import { CharactersComponent } from './characters/characters.component';
 import { SharedModule } from '../shared/shared.module';
 import { CharacterProfileComponent } from './character-profile/character-profile.component';
 import { CharactersSliderComponent } from './characters-slider/characters-slider.component';
+import { SwiperModule } from 'swiper/angular';
+
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { CharactersSliderComponent } from './characters-slider/characters-slider
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    SharedModule
+    SharedModule,
+    SwiperModule
   ]
 })
 export class CharactersModule { }

@@ -7,6 +7,7 @@
     overflow: hidden;
     border-radius: 8px;
     position: relative;
+    border: 1px solid transparent;
 
     .card__image__img__overlay {
       position: absolute;
@@ -53,6 +54,14 @@
       font-size: .9rem;
       font-family: $NeueHaasDisplayMediu;
       width: 110px;
+
+      @media screen and (max-width:767px) {
+        &:first-child {
+          font-size: 2.2rem;
+        }
+
+        font-size: 1.9rem;
+      }
     }
   }
 
@@ -61,8 +70,10 @@
     .card__image__img {
       img {
         opacity: 1;
-        transform: scale(1.1);
+        // transform: scale(1.1);
       }
+
+      border-color: #F44336;
     }
 
     .card__image__content {
