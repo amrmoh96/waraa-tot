@@ -2,12 +2,18 @@
   color: #fff;
   height: calc(100vh - 7.5rem);
 
-  @media only screen and (max-width:480px) {
+  @media only screen and (max-width:426px) {
     flex-direction: column;
   }
 
   .banner__description__area {
     flex-basis: 50%;
+
+    @media only screen and (max-width:426px) {
+      flex-basis: 100%;
+      order: 2;
+    }
+
     display: flex;
     padding-top: 5rem;
 
@@ -121,23 +127,41 @@
     position: relative;
     justify-content: center;
 
+    @media only screen and (max-width:426px) {
+      flex-basis: 100%;
+      width: 100%;
+      order: 1;
+    }
+
     .banner__graphics__area__slider__dots {
       position: absolute;
+      display: flex;
       top: 10%;
       right: 3%;
-      display: flex;
       flex-direction: column;
       z-index: 1;
+
+      @media only screen and (max-width:426px) {
+        top: unset;
+        right: unset;
+        flex-direction: row;
+        bottom: 0;
+      }
 
       .banner__graphics__area__slider__dots__dot {
         width: .5rem;
         height: .5rem;
+        margin-bottom: .6rem;
         background: transparent;
         border-radius: 50%;
         border: 1px solid #fff;
         transition: .5s all ease;
-        margin-bottom: .6rem;
         cursor: pointer;
+        @media only screen and (max-width:426px) {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: 0 .3rem;
+        }
       }
 
       .active-dot {
@@ -172,6 +196,10 @@
       transition: 1s all ease-in-out;
       opacity: 0;
 
+      @media only screen and (max-width:426px) {
+        width: 41rem;
+      }
+
       &.active-slide {
         opacity: 1;
       }
@@ -182,6 +210,10 @@
       width: 100%;
       left: -4.933rem;
       bottom: -7.6rem;
+
+      @media only screen and (max-width:426px) {
+        display: none;
+      }
 
 
       @media only screen and (max-width:1024px) and (min-width:768px) {
