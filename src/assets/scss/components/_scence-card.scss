@@ -17,6 +17,9 @@
     iframe {
       width: 100%;
       height: 15.466rem;
+      @media screen and (max-width:428px) {
+        height: 33.6rem;
+      }
     }
   }
 

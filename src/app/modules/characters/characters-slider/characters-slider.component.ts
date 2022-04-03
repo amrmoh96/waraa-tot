@@ -31,7 +31,7 @@ export class CharactersSliderComponent implements OnInit {
 			for (let index = 0; index < this.characters.length; index++) {
 				const element = this.characters[index];
 				if(element.id){
-					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[10,11]}).then(data => {
+					this.mediaService.GetByCharacterAndTags({'CharacterID':Number(element.id),'TagIds':[12]}).then(data => {
 						let _charMedia:Media[] = data;
 						for (let i = 0; i < _charMedia.length; i++) {
 							const mediaElement = _charMedia[i];

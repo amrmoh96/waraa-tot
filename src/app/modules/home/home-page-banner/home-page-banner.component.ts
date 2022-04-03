@@ -1,5 +1,5 @@
 import { Character } from './../../../models/Character.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CharacterService } from 'src/app/services/character.service';
 import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
@@ -28,8 +28,22 @@ export class HomePageBannerComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.mediaService.getMediaByTagIds([12]).then(res => {
-			this.media = res;
+			this.media = this.sortArray(res);
 		})
+	}
+
+	sortArray(arr: Media[]): Media[] {
+		let _sortedArr: Media[] = [];
+		let _fisrt: Media = arr?.find(C => C.title == 'Marwan') || {}
+		let _second: Media = arr?.find(C => C.title == 'Dalila') || {}
+		if (_fisrt.title) {
+			_sortedArr.push(_fisrt)
+		}
+		if (_second.title) {
+			_sortedArr.push(_second)
+		}
+		_sortedArr = _sortedArr.concat(arr?.filter(C => C.title != 'Marwan' && C.title != 'Dalila') || [])
+		return _sortedArr
 	}
 
 	scrollToNews($event: Event) {
@@ -38,7 +52,7 @@ export class HomePageBannerComponent implements OnInit {
 	}
 
 	slide(slide: number = 1) {
-		this.translate = -1 * slide * 40;
+		this.translate = -1 * slide * (this.isMobile() ? 48 : 40);
 		this.activeSlide = slide;
 		this.style = { 'transform': `translateX(${this.translate}rem)` }
 	}
@@ -51,6 +65,17 @@ export class HomePageBannerComponent implements OnInit {
 				this.slide(this.activeSlide + 1);
 			}
 		}, 3000)
+	}
+	@HostListener('window:resize', ['$event'])
+	onResize(event: any) {
+		this.isMobile()
+	}
+
+	isMobile(): boolean {
+		if (window.innerWidth <= 991) {
+			return true
+		}
+		return false
 	}
 
 	ngOnDestroy() {

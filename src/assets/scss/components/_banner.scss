@@ -189,15 +189,16 @@
 
     .banner__graphics__area__character {
       width: 40rem;
-      height: 70rem;
+      height: 40rem;
       margin: auto;
-      object-fit: scale-down;
+      object-fit: cover;
       object-position: top;
       transition: 1s all ease-in-out;
       opacity: 0;
 
       @media only screen and (max-width:426px) {
-        width: 41rem;
+        width: 50rem;
+        height: 50rem;
       }
 
       &.active-slide {
@@ -210,6 +211,13 @@
       width: 100%;
       left: -4.933rem;
       bottom: -7.6rem;
+
+      @media only screen and (min-width:2000px) {
+        bottom: -2.6rem;
+      }
+      @media only screen and (min-width:2559px) {
+        bottom: -3.4rem;
+      }
 
       @media only screen and (max-width:426px) {
         display: none;

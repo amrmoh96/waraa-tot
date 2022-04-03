@@ -21,6 +21,13 @@ export class CharactersComponent implements OnInit {
 	public imgApi: string = environment.imgApi;
 	public teachers: Character[] = [];
 	public students: Character[] = [];
+	public coverflowEffect = {
+		rotate: 0,
+		stretch: 0,
+		depth: 500,
+		modifier: this.isMobile() ? 3 : 1,
+		slideShadows: false
+	}
 
 	constructor(
 		private characterService: CharacterService,
@@ -35,36 +42,15 @@ export class CharactersComponent implements OnInit {
 				const element = this.characters[index];
 				element.order = index + 1;
 				if (element.id) {
-					this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [10, 11] }).then(data => {
+					this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [12] }).then(data => {
 						let _charMedia: Media[] = data;
 						for (let i = 0; i < _charMedia.length; i++) {
 							const mediaElement = _charMedia[i];
 							if (mediaElement.id) {
 								element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+								element.mediaID = mediaElement.id
 								this.teachers.push(element)
 								this.teachers = this.sortArray(this.teachers)
-								// this.tagService.getTagsByMediaId(mediaElement.id).then(tags => {
-								// 	let main_img :Tag|undefined = tags?.find(T => T.tag1 == 'main_image');
-								// 	if(main_img){
-								// 		if(tags?.find(T => T.tag1 == 'teacher')){
-								// 		}
-								// 		if(tags?.find(T => T.tag1 == 'student')){
-								// 			this.students.push(element)
-								// 			this.students = this.sortArray(this.students)
-								// 		}
-								// 	}
-								// })
-							}
-						}
-					})
-					this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [11] }).then(data => {
-						let _charMedia: Media[] = data;
-						for (let i = 0; i < _charMedia.length; i++) {
-							const mediaElement = _charMedia[i];
-							if (mediaElement.id) {
-								element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
-								this.students.push(element)
-								this.students = this.sortArray(this.students)
 							}
 						}
 					})
@@ -78,10 +64,18 @@ export class CharactersComponent implements OnInit {
 		this.selectedChar = char;
 	}
 
-	sortArray(arr: Character[]) {
-		return arr.sort((a, b) => {
-			return (a.id || 0) - (b?.id || 0)
-		})
+	sortArray(arr: Character[]): Character[] {
+		let _sortedArr: Character[] = [];
+		let _fisrt: Character = arr?.find(C => C.firstname == 'Marwan') || {}
+		let _second: Character = arr?.find(C => C.firstname == 'Dalilah') || {}
+		if (_fisrt.firstname) {
+			_sortedArr.push(_fisrt)
+		}
+		if (_second.firstname) {
+			_sortedArr.push(_second)
+		}
+		_sortedArr = _sortedArr.concat(arr?.filter(C => C.firstname != 'Marwan' && C.firstname != 'Dalilah') || [])
+		return _sortedArr
 	}
 	onSwiper([swiper]: any) {
 		// console.log(swiper);
@@ -90,7 +84,7 @@ export class CharactersComponent implements OnInit {
 		// console.log('slide change');
 	}
 	isMobile(): boolean {
-		if (window.innerWidth <=426) {
+		if (window.innerWidth <= 426) {
 			return true
 		}
 		return false

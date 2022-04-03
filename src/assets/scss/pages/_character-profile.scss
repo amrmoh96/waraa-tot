@@ -214,4 +214,7 @@
 
 .card__image .card__image__img img {
   height: 15.4rem;
+  @media screen and (max-width:428px) {
+    height: 33.6rem;
+  }
 }

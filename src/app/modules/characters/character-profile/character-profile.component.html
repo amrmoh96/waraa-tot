@@ -23,7 +23,7 @@
     </div>
     <div class="character__profile__scenes">
         <div class="container-fluid">
-            <h2 class="character__profile__scenes__title">Marwan scenes</h2>
+            <h2 class="character__profile__scenes__title">{{character?.firstname}} scenes</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
                     *ngFor="let vid of charVideos|slice:0:vidSize">
@@ -41,7 +41,7 @@
     </div>
     <div class="character__profile__scenes">
         <div class="container-fluid">
-            <h2 class="character__profile__scenes__title">Marwan Images</h2>
+            <h2 class="character__profile__scenes__title">{{character?.firstname}} Images</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
                     *ngFor="let img of charImages | slice:0:loadSize">

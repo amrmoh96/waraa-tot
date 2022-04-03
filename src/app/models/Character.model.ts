@@ -10,4 +10,5 @@ export interface Character {
 	fullName?: string;
 	profileURL?:string;
 	order?:number;
+	mediaID?:number;
 }
