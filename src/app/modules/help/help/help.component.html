@@ -7,52 +7,12 @@
     <div class="container">
         <div class="help__page__content__container">
             <div class="help__page__content">
-                <div class="help__page__content__box">
+                <div class="help__page__content__box" *ngFor="let topic of topics" routerLink="{{topic.id}}">
                     <div class="border-div"></div>
                     <img src="../../../../assets/images/scence.jpg"
                         alt="">
                     <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
-                    </div>
-                </div>
-                <div class="help__page__content__box">
-                    <div class="border-div"></div>
-                    <img src="../../../../assets/images/scence.jpg"
-                        alt="">
-                    <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
-                    </div>
-                </div>
-                <div class="help__page__content__box">
-                    <div class="border-div"></div>
-                    <img src="../../../../assets/images/scence.jpg"
-                        alt="">
-                    <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
-                    </div>
-                </div>
-                <div class="help__page__content__box">
-                    <div class="border-div"></div>
-                    <img src="../../../../assets/images/scence.jpg"
-                        alt="">
-                    <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
-                    </div>
-                </div>
-                <div class="help__page__content__box">
-                    <div class="border-div"></div>
-                    <img src="../../../../assets/images/scence.jpg"
-                        alt="">
-                    <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
-                    </div>
-                </div>
-                <div class="help__page__content__box">
-                    <div class="border-div"></div>
-                    <img src="../../../../assets/images/scence.jpg"
-                        alt="">
-                    <div class="help__page__content__box__data">
-                        <div class="help__page__content__box__title">Topic Name dolor sit amet, consetetur elitr</div>
+                        <div class="help__page__content__box__title">{{topic.title}}</div>
                     </div>
                 </div>
             </div>

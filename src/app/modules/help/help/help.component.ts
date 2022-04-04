@@ -1,5 +1,7 @@
 import { UtilityService } from 'src/app/services/utility.service';
 import { Component, OnInit } from '@angular/core';
+import { Topic } from 'src/app/models/Topic.model';
+import { TopicService } from 'src/app/services/topic.service';
 
 @Component({
 	selector: 'app-help',
@@ -8,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpComponent implements OnInit {
 	public showContactForm: boolean = false;
-	constructor(private UtilityService: UtilityService) {
+	topics:Topic[]=[];
+	constructor(private UtilityService: UtilityService, private topicService:TopicService) {
 		window.scroll(0, 0);
+		this.topicService.getTopic().then(res => {
+			this.topics = res;
+		})
 	}
 
 	ngOnInit(): void {}

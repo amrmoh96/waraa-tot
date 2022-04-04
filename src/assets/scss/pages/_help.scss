@@ -98,6 +98,7 @@
         position: relative;
         margin-bottom: 2rem;
         overflow: hidden;
+        cursor: pointer;
 
         @media screen and (max-width:426px) {
           flex-basis: 100%;
@@ -326,4 +327,174 @@
     }
   }
 
+}
+
+.help__article {
+  background: url('../../images/scene-bg.jpg');
+  padding: 150px 0 90px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .help__article__title {
+    color: #fff;
+    font-family: $PlayfairDisplay-Bold;
+    font-size: 2.125rem;
+    // text-transform: uppercase;
+    margin-bottom: 0;
+
+    @media screen and (max-width:426px) {
+      font-size: 4.25rem;
+    }
+  }
+
+  .help__article__category {
+    color: #fff;
+    font-family: $NeueHaasDisplayBold;
+    font-size: .9rem;
+    text-transform: uppercase;
+    text-align: right;
+    color: #646161;
+    margin-bottom: 15px;
+
+    @media screen and (max-width:426px) {
+      font-size: 2rem;
+    }
+  }
+
+  .help__article__article {
+    color: #fff;
+    font-family: $NeueHaasDisplayRoman;
+    font-size: 1.2rem;
+    line-height: 1.6;
+
+    @media screen and (max-width:426px) {
+      font-size: 2.3rem;
+    }
+  }
+
+  .help__article__contact__form {
+    h1 {
+      color: #ffffff;
+      font-size: 3.5rem;
+      font-family: $NeueHaasDisplayBold;
+      margin-bottom: 0;
+    }
+
+    .form__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: $NeueHaasDisplayRoman;
+
+      @media screen and (max-width:426px) {
+        flex-direction: column;
+      }
+
+      .input__group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        &:not(:last-child) {
+          margin-right: 3.5rem;
+        }
+
+        @media screen and (max-width:426px) {
+          margin-right: 0 !important;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: rgba($color: #fff, $alpha: .7);
+          font-size: 1rem;
+          margin: 0;
+
+          @media screen and (max-width:426px) {
+            font-size: 2.5rem;
+          }
+
+          span {
+            font-size: 2rem;
+
+            @media screen and (max-width:426px) {
+              font-size: 3.5rem;
+            }
+          }
+        }
+
+        input {
+          // min-width: 415px;
+          height: 48px;
+
+          &::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: rgba($color: #fff, $alpha: .7);
+            opacity: 1;
+            /* Firefox */
+          }
+
+          &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: rgba($color: #fff, $alpha: .7);
+          }
+
+          &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: rgba($color: #fff, $alpha: .7);
+          }
+        }
+
+        textarea,
+        input {
+          border: 2px solid rgba($color: #fff, $alpha: .7);
+          padding-left: 1rem;
+          outline: none;
+          font-size: .9rem;
+          font-family: $NeueHaasDisplayRoman;
+          background: transparent;
+          color: rgba($color: #fff, $alpha: .7);
+
+          @media screen and (max-width:426px) {
+            font-size: 2.3rem;
+            min-width: unset;
+            // width: 300px;
+          }
+        }
+      }
+
+      &.button__row {
+        justify-content: center;
+
+        button {
+          color: #F44336;
+          width: 17.3333rem;
+          height: 3.533rem;
+          font-size: 1.3rem;
+          font-family: $NeueHaasDisplayBold;
+
+          @media screen and (max-width:426px) {
+            font-size: 2.3rem;
+            height: 4.533rem;
+          }
+        }
+      }
+
+    }
+
+    .success__message {
+      color: #fff;
+      font-size: 1.5rem;
+      font-family: 'PlayfairDisplay-Regular';
+      text-align: center;
+      margin-top: 20px;
+
+      @media screen and (max-width:426px) {
+        font-size: 2.5rem;
+      }
+    }
+  }
 }
