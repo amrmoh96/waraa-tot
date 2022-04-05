@@ -9,9 +9,15 @@
             <swiper [effect]="'coverflow'"
                 [grabCursor]="true"
                 [centeredSlides]="true"
+                [loop]="true"
+                [initialSlide]="5"
+                [autoplay]="{
+                    delay: 5000,
+                    disableOnInteraction: false
+                  }"
                 [slidesPerView]="isMobile() ? 1:3"
                 [coverflowEffect]="coverflowEffect"
-                [pagination]="true">
+                [pagination]="false">
                 <ng-template swiperSlide
                     *ngFor="let char of teachers">
                     <!-- (slideChange)="onSlideChange()"

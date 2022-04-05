@@ -6,9 +6,9 @@ import { CharacterService } from 'src/app/services/character.service';
 import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
-import SwiperCore, { EffectCoverflow, EffectFade, Swiper } from 'swiper';
+import SwiperCore, { Autoplay, EffectCoverflow, EffectFade, Swiper, SwiperOptions } from 'swiper';
 
-SwiperCore.use([EffectCoverflow]);
+SwiperCore.use([Autoplay, EffectCoverflow]);
 
 @Component({
 	selector: 'app-characters',
@@ -26,7 +26,8 @@ export class CharactersComponent implements OnInit {
 		stretch: 0,
 		depth: 500,
 		modifier: this.isMobile() ? 3 : 1,
-		slideShadows: false
+		slideShadows: false,
+		loop:true
 	}
 
 	constructor(
@@ -68,13 +69,17 @@ export class CharactersComponent implements OnInit {
 		let _sortedArr: Character[] = [];
 		let _fisrt: Character = arr?.find(C => C.firstname == 'Marwan') || {}
 		let _second: Character = arr?.find(C => C.firstname == 'Dalilah') || {}
+		let _Third: Character = arr?.find(C => C.firstname == 'Bassem') || {}
+		if (_Third.firstname) {
+			_sortedArr.push(_Third)
+		}
 		if (_fisrt.firstname) {
 			_sortedArr.push(_fisrt)
 		}
 		if (_second.firstname) {
 			_sortedArr.push(_second)
 		}
-		_sortedArr = _sortedArr.concat(arr?.filter(C => C.firstname != 'Marwan' && C.firstname != 'Dalilah') || [])
+		_sortedArr = _sortedArr.concat(arr?.filter(C => C.firstname != 'Marwan' && C.firstname != 'Dalilah' && C.firstname != 'Bassem') || [])
 		return _sortedArr
 	}
 	onSwiper([swiper]: any) {
