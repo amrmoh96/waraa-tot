@@ -9,6 +9,10 @@
     padding: 0 6rem
   }
 
+  @media screen and (max-width:426px) {
+    padding-top: 75px;
+  }
+
   .title {
     h1 {
       color: #fff;
@@ -33,6 +37,7 @@
     transition: .5s all ease;
     border: 1px solid transparent;
     cursor: pointer;
+    z-index: 999;
 
     p {
       margin-bottom: 0;
@@ -290,7 +295,7 @@
           @media screen and (max-width:426px) {
             font-size: 2.3rem;
             min-width: unset;
-            width: 300px;
+            // width: 300px;
           }
         }
       }
@@ -336,15 +341,43 @@
   background-position: center;
   background-repeat: no-repeat;
 
+  @media screen and (max-width:426px) {
+    padding: 75px 0;
+  }
+
   .help__article__title {
     color: #fff;
     font-family: $PlayfairDisplay-Bold;
     font-size: 2.125rem;
     // text-transform: uppercase;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
 
     @media screen and (max-width:426px) {
       font-size: 4.25rem;
+    }
+  }
+
+  .help__article__images {
+    display: flex;
+    margin: 2rem 0;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0 0 0 / 61%) 92%, black 96%, rgb(0 0 0 / 88%) 108%);
+    }
+
+    img {
+      width: 50%;
+      height: 200px;
+      object-fit: cover;
+      object-position: left;
+
+      @media screen and (max-width:426px) {
+        height: 130px;
+      }
     }
   }
 
@@ -367,6 +400,7 @@
     font-family: $NeueHaasDisplayRoman;
     font-size: 1.2rem;
     line-height: 1.6;
+    margin-bottom: 2.5rem;
 
     @media screen and (max-width:426px) {
       font-size: 2.3rem;

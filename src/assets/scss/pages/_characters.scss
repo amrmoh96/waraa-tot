@@ -332,3 +332,29 @@
     }
   }
 }
+
+.characters__slider_item {
+  position: relative;
+
+  .characters__slider_item__name {
+    position: absolute;
+    width: 100%;
+    bottom: 2rem;
+
+    p {
+      font-size: 2.2rem;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+
+    @media screen and (max-width:426px) {
+      bottom: 20rem;
+
+      p {
+        font-size: 4rem;
+      }
+    }
+  }
+}

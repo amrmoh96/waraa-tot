@@ -52,9 +52,18 @@ export class HomePageBannerComponent implements OnInit {
 	}
 
 	slide(slide: number = 1) {
-		this.translate = -1 * slide * (this.isMobile() ? 48 : 40);
+		this.translate = -1 * slide * this.getSlideWidth();
 		this.activeSlide = slide;
 		this.style = { 'transform': `translateX(${this.translate}rem)` }
+	}
+
+	getSlideWidth():number{
+		if(window.innerWidth <= 320){
+			return 50
+		}else if (this.isMobile()){
+			return 52.5
+		}
+		return 40
 	}
 
 	ngAfterViewInit() {

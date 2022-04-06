@@ -107,7 +107,7 @@
 
       .banner__description__area__text {
         font-size: 1.06rem;
-        margin-top: 6.2rem;
+        margin-top: 4.2rem;
         position: relative;
         z-index: 1;
 
@@ -145,7 +145,7 @@
         top: unset;
         right: unset;
         flex-direction: row;
-        bottom: 0;
+        bottom: 10px;
       }
 
       .banner__graphics__area__slider__dots__dot {
@@ -191,12 +191,16 @@
       width: 40rem;
       height: 40rem;
       margin: auto;
-      object-fit: cover;
+      object-fit: contain;
       object-position: top;
       transition: 1s all ease-in-out;
       opacity: 0;
 
       @media only screen and (max-width:426px) {
+        width: 53rem;
+        height: 53rem;
+      }
+      @media only screen and (max-width:320px) {
         width: 50rem;
         height: 50rem;
       }

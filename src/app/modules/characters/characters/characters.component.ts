@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { forkJoin } from 'rxjs';
 import { Character } from 'src/app/models/Character.model';
 import { Media } from 'src/app/models/Media.model';
 import { Tag } from 'src/app/models/Tag.model';
@@ -7,8 +8,10 @@ import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { environment } from 'src/environments/environment';
 import SwiperCore, { Autoplay, EffectCoverflow, EffectFade, Swiper, SwiperOptions } from 'swiper';
+import { SwiperComponent } from 'swiper/angular';
 
-SwiperCore.use([Autoplay, EffectCoverflow]);
+// SwiperCore.use([Autoplay, EffectCoverflow]);
+SwiperCore.use([EffectCoverflow]);
 
 @Component({
 	selector: 'app-characters',
@@ -16,6 +19,7 @@ SwiperCore.use([Autoplay, EffectCoverflow]);
 	styleUrls: ['./characters.component.scss']
 })
 export class CharactersComponent implements OnInit {
+	@ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
 	public characters: Character[] = [];
 	public selectedChar: Character | undefined;
 	public imgApi: string = environment.imgApi;
@@ -27,7 +31,7 @@ export class CharactersComponent implements OnInit {
 		depth: 500,
 		modifier: this.isMobile() ? 3 : 1,
 		slideShadows: false,
-		loop:true
+		loop: true
 	}
 
 	constructor(
@@ -39,24 +43,43 @@ export class CharactersComponent implements OnInit {
 	ngOnInit(): void {
 		this.characterService.getCharacters().then(res => {
 			this.characters = res;
+
+			let request: any = [];
 			for (let index = 0; index < this.characters.length; index++) {
 				const element = this.characters[index];
 				element.order = index + 1;
 				if (element.id) {
-					this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [12] }).then(data => {
-						let _charMedia: Media[] = data;
-						for (let i = 0; i < _charMedia.length; i++) {
-							const mediaElement = _charMedia[i];
-							if (mediaElement.id) {
-								element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
-								element.mediaID = mediaElement.id
-								this.teachers.push(element)
-								this.teachers = this.sortArray(this.teachers)
-							}
-						}
-					})
+					request.push(this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [12] }))
+					// this.mediaService.GetByCharacterAndTags({ 'CharacterID': Number(element.id), 'TagIds': [12] }).then(data => {
+					// 	let _charMedia: Media[] = data;
+					// 	for (let i = 0; i < _charMedia.length; i++) {
+					// 		const mediaElement = _charMedia[i];
+					// 		if (mediaElement.id) {
+					// 			element.profileURL = `${this.imgApi}/Media/GetMedia?id=${mediaElement.id}`
+					// 			element.mediaID = mediaElement.id
+					// 			this.teachers.push(element)
+					// 			this.teachers = this.sortArray(this.teachers)
+					// 		}
+					// 	}
+					// })
 				}
 			}
+			forkJoin(request).subscribe((res: any[]) => {
+				for (let index = 0; index < res.length; index++) {
+					const element: any[] = res[index];
+					for (let i = 0; i < element.length; i++) {
+						const media = element[i];
+						console.log(media);
+						let char: Character | undefined = this.characters.find(CH => CH.firstname?.toLowerCase()?.includes(media?.title?.toLowerCase()))
+						if (char) {
+							char.profileURL = `${this.imgApi}/Media/GetMedia?id=${media.id}`
+							char.mediaID = media.id
+							this.teachers.push(char)
+						}
+					}
+				}
+				this.teachers = this.sortArray(this.teachers)
+			})
 		});
 	}
 
