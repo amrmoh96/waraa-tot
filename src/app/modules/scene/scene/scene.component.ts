@@ -3,6 +3,13 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Media } from 'src/app/models/Media.model';
 import { MediaService } from 'src/app/services/media.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment';
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination]);
+
 
 @Component({
 	selector: 'app-scene',
@@ -10,6 +17,10 @@ import { UtilityService } from 'src/app/services/utility.service';
 	styleUrls: ['./scene.component.scss']
 })
 export class SceneComponent implements OnInit {
+	public imgApi:string = environment.imgApi
+	public showImages: boolean = false;
+	public initialSlide:number=0;
+	
 	public mainScene: Media = {};
 	public scenes: Media[] = [];
 	public Videos: Media[] = [];
@@ -58,10 +69,19 @@ export class SceneComponent implements OnInit {
 		this.isVideoPlaying = false;
 		this.utilityService.bodyScrollable();
 	}
+	hideImages() {
+		this.showImages = false;
+		this.utilityService.bodyScrollable();
+	}
 	LoadMore() {
 		this.loadSize += 3;
 	}
 	LoadMoreVid() {
 		this.vidSize += 3;
+	}
+	openImageCarousel(i: number): void {
+		this.initialSlide = i
+		this.showImages = true
+		this.utilityService.bodyUnscrollable();
 	}
 }

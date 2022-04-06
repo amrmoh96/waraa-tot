@@ -9,7 +9,7 @@
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe> -->
-                    <img src="../../../../assets/images/bh-scence.png"
+                <img src="../../../../assets/images/bh-scence.png"
                     alt="">
                 <div class="scene__page__scenes__main__scene__title">
                     <div class="play">
@@ -46,8 +46,9 @@
             <h2 class="scene__page__scenes__title">Images</h2>
             <div class="row">
                 <div class="col-md-4 mb-4"
-                    *ngFor="let img of images | slice:0:loadSize">
-                    <app-card-image [image]="img"></app-card-image>
+                    *ngFor="let img of images | slice:0:loadSize;let i = index">
+                    <app-card-image (click)="openImageCarousel(i)"
+                        [image]="img"></app-card-image>
                 </div>
             </div>
             <div class="row"
@@ -71,5 +72,27 @@
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
+    </div>
+</div>
+<div class="video__player__container"
+    *ngIf="showImages">
+    <div class="video__player__container__content">
+        <i (click)="hideImages()"
+            class="la la-times"></i>
+        <div>
+            <swiper style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                [spaceBetween]="0"
+                [navigation]="true"
+                [initialSlide]="initialSlide"
+                [centeredSlides]="true"
+                class="mySwiper2">
+                <ng-template *ngFor="let scene of images"
+                    swiperSlide>
+                    <img class="w-100 h-100"
+                        src="{{this.imgApi}}/Media/GetMedia?id={{scene.id}}"
+                        alt="">
+                </ng-template>
+            </swiper>
+        </div>
     </div>
 </div>

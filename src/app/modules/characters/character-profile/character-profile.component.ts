@@ -6,8 +6,13 @@ import { CharacterMediaService } from 'src/app/services/character-media.service'
 import { CharacterService } from 'src/app/services/character.service';
 import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
+import { UtilityService } from 'src/app/services/utility.service';
 import { environment } from 'src/environments/environment';
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
 
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination]);
 @Component({
 	selector: 'app-character-profile',
 	templateUrl: './character-profile.component.html',
@@ -22,12 +27,15 @@ export class CharacterProfileComponent implements OnInit {
 	public coverImage?: string = '';
 	loadSize: number = 6;
 	vidSize: number = 6;
+	public showImages: boolean = false;
+	public initialSlide:number=0;
 	constructor(
 		private characterService: CharacterService,
 		private mediaService: MediaService,
 		private CHME: CharacterMediaService,
 		private tagService: TagsService,
-		private activeRoute: ActivatedRoute
+		private activeRoute: ActivatedRoute,
+		private utilityService: UtilityService
 	) {
 		this.resetLoadSize()
 		window.scroll(0, 0)
@@ -113,5 +121,14 @@ export class CharacterProfileComponent implements OnInit {
 	}
 	LoadMoreVid() {
 		this.vidSize += 3;
+	}
+	openImageCarousel(i: number): void {
+		this.initialSlide = i
+		this.showImages = true
+		this.utilityService.bodyUnscrollable();
+	}
+	hideImages() {
+		this.showImages = false;
+		this.utilityService.bodyScrollable();
 	}
 }

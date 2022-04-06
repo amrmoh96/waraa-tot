@@ -4,7 +4,12 @@ import { Media } from 'src/app/models/Media.model';
 import { MediaService } from 'src/app/services/media.service';
 import { TagsService } from 'src/app/services/tags.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import { environment } from 'src/environments/environment';
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
 
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination]);
 @Component({
 	selector: 'app-scene-behind',
 	templateUrl: './scene-behind.component.html',
@@ -17,6 +22,9 @@ export class SceneBehindComponent implements OnInit {
 	public isVideoPlaying: boolean = false;
 	loadSize: number = 6;
 	vidSize: number = 6;
+	public imgApi:string = environment.imgApi
+	public showImages: boolean = false;
+	public initialSlide:number=0;
 	constructor(private media: MediaService, private tagsService: TagsService, private sanitizer: DomSanitizer, private utilityService: UtilityService) { }
 
 	ngOnInit(): void {
@@ -61,6 +69,15 @@ export class SceneBehindComponent implements OnInit {
 	}
 	LoadMoreVid() {
 		this.vidSize += 3;
+	}
+	openImageCarousel(i: number): void {
+		this.initialSlide = i
+		this.showImages = true
+		this.utilityService.bodyUnscrollable();
+	}
+	hideImages() {
+		this.showImages = false;
+		this.utilityService.bodyScrollable();
 	}
 
 }
